@@ -1,0 +1,7 @@
+interface:
+  display_name: "Power BI Desktop Handbook"
+  short_description: "Version-aware Power BI visual guidance"
+  brand_color: "#5B2C6F"
+  default_prompt: "Use $powerbi-desktop-handbook to verify a visual or setting for my Desktop build and generate an offline guide."
+policy:
+  allow_implicit_invocation: true

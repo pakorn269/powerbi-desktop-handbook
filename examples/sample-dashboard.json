@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "operations-pulse",
+  "title": "Operations Pulse",
+  "organization": "Example Organization",
+  "subtitle": "A compact example showing how an exact-build visual handbook becomes a repeatable construction checklist.",
+  "release": "2.150.5353.0",
+  "page": { "width": 1280, "height": 720, "background": "#F3EFE5" },
+  "brand": { "ink": "#182021", "accent": "#B94C2D", "secondary": "#587164" },
+  "snapshot": [
+    { "label": "Open incidents", "value": "37" },
+    { "label": "Critical", "value": "4" },
+    { "label": "Median age", "value": "2.6 days" }
+  ],
+  "visuals": [
+    {
+      "id": "open-incidents",
+      "title": "Open incidents",
+      "type": "cardVisual",
+      "position": { "x": 48, "y": 100, "width": 250, "height": 130 },
+      "fields": ["Measures[Open incidents]"],
+      "settings": [
+        { "path": "Format visual > Callout values", "label": "Font size", "value": "34 pt" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#FFFDF7" }
+      ]
+    },
+    {
+      "id": "incidents-by-team",
+      "title": "Incidents by team",
+      "type": "clusteredBarChart",
+      "position": { "x": 48, "y": 260, "width": 560, "height": 390 },
+      "fields": ["Y-axis: Team[Name]", "X-axis: Measures[Open incidents]"],
+      "settings": [
+        { "path": "Format visual > Bars", "label": "Color", "value": "#B94C2D" },
+        { "path": "Format visual > Data labels", "label": "Show", "value": "On" }
+      ]
+    },
+    {
+      "id": "severity-matrix",
+      "title": "Severity by region",
+      "type": "Matrix",
+      "position": { "x": 640, "y": 100, "width": 590, "height": 550 },
+      "fields": ["Rows: Region[Region]", "Columns: Incident[Severity]", "Values: Measures[Open incidents]"],
+      "settings": [
+        { "path": "Format visual > Grid", "label": "Horizontal grid", "value": "On" },
+        { "path": "Format visual > Row headers", "label": "Stepped layout", "value": "Off" }
+      ],
+      "notes": "The gallery calls this Matrix; the 2.150 theme schema calls it pivotTable."
+    }
+  ],
+  "sections": [
+    { "title": "Prepare", "items": ["Open the report in the exact target Desktop build.", "Confirm the semantic model fields and measures exist."] },
+    { "title": "Build", "items": ["Set the page to 1280 × 720.", "Add visuals in the order listed below."] },
+    { "title": "Verify", "items": ["Check alignment, titles, filtering, and empty states.", "Save a PBIX copy and test it on the target Report Server."] }
+  ],
+  "acceptance": [
+    "The PBIX opens without a version warning in the target Report Server Desktop.",
+    "Every field well and formatting instruction matches the manifest.",
+    "The report uploads to the intended Report Server portal."
+  ]
+}

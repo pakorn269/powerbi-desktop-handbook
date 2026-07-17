@@ -1,0 +1,15 @@
+{
+  "name": "powerbi-desktop-handbook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Version-aware Power BI Desktop visual catalog and offline handbook generator.",
+  "scripts": {
+    "handbook": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs",
+    "audit:public": "node --test test/publication.test.mjs",
+    "test": "node --test",
+    "validate": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs validate --manifest examples/sample-dashboard.json"
+  },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}

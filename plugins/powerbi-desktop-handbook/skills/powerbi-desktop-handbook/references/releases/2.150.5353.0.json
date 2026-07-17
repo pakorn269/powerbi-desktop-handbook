@@ -1,0 +1,22 @@
+{
+  "version": "2.150.5353.0",
+  "product": "Microsoft Power BI Desktop",
+  "edition": "Optimized for Power BI Report Server",
+  "release": "January 2026",
+  "published": "2026-06-11",
+  "schemaFamily": "2.150",
+  "explorationSchema": "5.69",
+  "defaultExecutable": "C:\\Program Files\\Microsoft Power BI Desktop RS\\bin\\PBIDesktop.exe",
+  "downloadUrl": "https://www.microsoft.com/en-us/download/details.aspx?id=106035",
+  "schema": {
+    "file": "../schemas/reportThemeSchema-2.150.json",
+    "url": "https://raw.githubusercontent.com/microsoft/powerbi-desktop-samples/main/Report%20Theme%20JSON%20Schema/reportThemeSchema-2.150.json",
+    "sha256": "c18692ab1c22cd2d8426759088378c3ce36b9222056b5dffda575d578fe174f6"
+  },
+  "certification": {
+    "exactBuildRequired": true,
+    "schemaFamilyVerified": true,
+    "liveUi": "pending",
+    "note": "The pinned schema is verified. Insert gallery labels and Format pane paths still require inspection in exact build 2.150.5353.0."
+  }
+}

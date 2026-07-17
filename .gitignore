@@ -1,0 +1,15 @@
+node_modules/
+coverage/
+*.tmp
+*.log
+.DS_Store
+
+# Local or customer-specific handbook material
+private/
+customer/
+customers/
+local/
+*.private.json
+*.private.html
+*.customer.json
+*.customer.html

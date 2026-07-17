@@ -1,0 +1,1240 @@
+{
+  "release": "2.150.5353.0",
+  "capture": {
+    "edition": "Optimized for Power BI Report Server",
+    "fileVersion": "2.150.5353.0",
+    "productVersion": "2.150.5353.0 (25.12)+7b319eda3a6a7330c975420463a9398f79ab9ea0",
+    "locale": "en-US",
+    "interactionMode": "classic-visualizations-pane",
+    "observedAt": "2026-07-17",
+    "evidence": "exact-live-ui"
+  },
+  "notes": [
+    "The exact build's classic All visual types gallery exposed 36 entries; 30 map to the repository's 37 modeled gallery entries.",
+    "The two visible Card entries were distinguished by their field wells: current Card exposes Value, Categories, and Tooltips; legacy Card exposes Fields."
+  ],
+  "visuals": [
+    {
+      "id": "barChart",
+      "label": "Stacked bar chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "columnChart",
+      "label": "Stacked column chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "clusteredBarChart",
+      "label": "Clustered bar chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "clusteredColumnChart",
+      "label": "Clustered column chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "hundredPercentStackedBarChart",
+      "label": "100% Stacked bar chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "hundredPercentStackedColumnChart",
+      "label": "100% Stacked column chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "lineChart",
+      "label": "Line chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "secondaryYAxis",
+          "label": "Secondary y-axis",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 5,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "areaChart",
+      "label": "Area chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "secondaryYAxis",
+          "label": "Secondary y-axis",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 5,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "stackedAreaChart",
+      "label": "Stacked area chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "hundredPercentStackedAreaChart",
+      "label": "100% Stacked area chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "lineStackedColumnComboChart",
+      "label": "Line and stacked column chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "columnYAxis",
+          "label": "Column y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "lineYAxis",
+          "label": "Line y-axis",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "columnLegend",
+          "label": "Column legend",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 5,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "lineClusteredColumnComboChart",
+      "label": "Line and clustered column chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "columnYAxis",
+          "label": "Column y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "lineYAxis",
+          "label": "Line y-axis",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "columnLegend",
+          "label": "Column legend",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 5,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "ribbonChart",
+      "label": "Ribbon chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "xAxis",
+          "label": "X-axis",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "smallMultiples",
+          "label": "Small multiples",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "waterfallChart",
+      "label": "Waterfall chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "category",
+          "label": "Category",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "breakdown",
+          "label": "Breakdown",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y-axis",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "funnel",
+      "label": "Funnel",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "category",
+          "label": "Category",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "scatterChart",
+      "label": "Scatter chart",
+      "family": "cartesian",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "xAxis",
+          "label": "X Axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "yAxis",
+          "label": "Y Axis",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "size",
+          "label": "Size",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "playAxis",
+          "label": "Play Axis",
+          "order": 5,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 6,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "pieChart",
+      "label": "Pie chart",
+      "family": "part-to-whole",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "details",
+          "label": "Details",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "donutChart",
+      "label": "Donut chart",
+      "family": "part-to-whole",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "details",
+          "label": "Details",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "treemap",
+      "label": "Treemap",
+      "family": "part-to-whole",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "category",
+          "label": "Category",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "details",
+          "label": "Details",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "map",
+      "label": "Map",
+      "family": "map",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "location",
+          "label": "Location",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "latitude",
+          "label": "Latitude",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "longitude",
+          "label": "Longitude",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "bubbleSize",
+          "label": "Bubble size",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 5,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "filledMap",
+      "label": "Filled map",
+      "family": "map",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "location",
+          "label": "Location",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "legend",
+          "label": "Legend",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "latitude",
+          "label": "Latitude",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "longitude",
+          "label": "Longitude",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "azureMap",
+      "label": "Azure Maps",
+      "family": "map",
+      "verification": "pending",
+      "support": "unknown",
+      "roles": [],
+      "reason": "Not exposed as a direct visual icon in the exact build's classic All visual types gallery during inspection."
+    },
+    {
+      "id": "shapeMap",
+      "label": "Shape map",
+      "family": "map",
+      "verification": "pending",
+      "support": "unknown",
+      "roles": [],
+      "reason": "Not exposed as a direct visual icon in the exact build's classic All visual types gallery during inspection."
+    },
+    {
+      "id": "gauge",
+      "label": "Gauge",
+      "family": "card-kpi-gauge",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "value",
+          "label": "Value",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "minimumValue",
+          "label": "Minimum value",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "maximumValue",
+          "label": "Maximum value",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "targetValue",
+          "label": "Target value",
+          "order": 3,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 4,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "cardVisual",
+      "label": "Card",
+      "family": "card-kpi-gauge",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "value",
+          "label": "Value",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "categories",
+          "label": "Categories",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "kpi",
+      "label": "KPI",
+      "family": "card-kpi-gauge",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "value",
+          "label": "Value",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "trendAxis",
+          "label": "Trend axis",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "target",
+          "label": "Target",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "slicer",
+      "label": "Slicer",
+      "family": "filter",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "field",
+          "label": "Field",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "tableEx",
+      "label": "Table",
+      "family": "tabular",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "columns",
+          "label": "Columns",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "pivotTable",
+      "label": "Matrix",
+      "family": "tabular",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "rows",
+          "label": "Rows",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "columns",
+          "label": "Columns",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "scriptVisual",
+      "label": "R script visual",
+      "family": "script",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "pythonVisual",
+      "label": "Python visual",
+      "family": "script",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "values",
+          "label": "Values",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "keyDriversVisual",
+      "label": "Key influencers",
+      "family": "ai",
+      "verification": "pending",
+      "support": "unknown",
+      "roles": [],
+      "reason": "Not exposed as a direct visual icon in the exact build's classic All visual types gallery during inspection."
+    },
+    {
+      "id": "decompositionTreeVisual",
+      "label": "Decomposition tree",
+      "family": "ai",
+      "verification": "verified",
+      "support": "field-roles",
+      "roles": [
+        {
+          "id": "analyze",
+          "label": "Analyze",
+          "order": 0,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "explainBy",
+          "label": "Explain by",
+          "order": 1,
+          "required": "unknown",
+          "capacity": "unknown"
+        },
+        {
+          "id": "tooltips",
+          "label": "Tooltips",
+          "order": 2,
+          "required": "unknown",
+          "capacity": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "qnaVisual",
+      "label": "Q&A",
+      "family": "ai",
+      "verification": "pending",
+      "support": "unknown",
+      "roles": [],
+      "reason": "Not exposed as a direct visual icon in the exact build's classic All visual types gallery during inspection."
+    },
+    {
+      "id": "aiNarratives",
+      "label": "Smart narrative",
+      "family": "ai",
+      "verification": "pending",
+      "support": "unknown",
+      "roles": [],
+      "reason": "Not exposed as a direct visual icon in the exact build's classic All visual types gallery during inspection."
+    },
+    {
+      "id": "scorecard",
+      "label": "Scorecard",
+      "family": "scorecard",
+      "verification": "pending",
+      "support": "unknown",
+      "roles": [],
+      "reason": "Not exposed as a direct visual icon in the exact build's classic All visual types gallery during inspection."
+    },
+    {
+      "id": "rdlVisual",
+      "label": "Paginated report visual",
+      "family": "paginated-report",
+      "verification": "pending",
+      "support": "unknown",
+      "roles": [],
+      "reason": "Not exposed as a direct visual icon in the exact build's classic All visual types gallery during inspection."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+---
+name: powerbi-desktop-handbook
+description: Provide version-aware guidance for Power BI Desktop visuals and Format pane settings, including visual availability, legacy or renamed visuals, Report Server compatibility, schema-backed property lookup, and generation or validation of offline HTML build handbooks. Use when identifying visuals, translating visual names, checking exact-build support, documenting manual PBIX construction, or building a visual setup guide. Do not use this skill to claim that Power BI Desktop RS supports PBIP/PBIR authoring or to modify PBIX report pages.
+---
+
+# Power BI Desktop Handbook
+
+Use the bundled CLI and pinned evidence before answering questions about whether a visual or setting exists. Power BI visual names differ among the Insert gallery, internal report JSON, theme schema, documentation, and older releases.
+
+## Workflow
+
+1. Run `node scripts/handbook.mjs detect --json` to compare the installed Report Server Desktop executable with the target release.
+2. Run `node scripts/handbook.mjs lookup --release 2.150.5353.0 --visual "<name>" --json` before giving visual-specific instructions.
+3. State the evidence level: exact live UI, schema family, Microsoft documentation, or project observation.
+4. For a build guide, author a manifest following `../../../examples/sample-dashboard.json`, using legacy or structured field assignments as appropriate; validate it, then build the standalone HTML file.
+5. Mark instructions as live-UI-pending unless the exact executable build has been inspected.
+
+## Commands
+
+```powershell
+node scripts/handbook.mjs detect
+node scripts/handbook.mjs catalog --release 2.150.5353.0
+node scripts/handbook.mjs lookup --release 2.150.5353.0 --visual Matrix
+node scripts/handbook.mjs validate --manifest dashboard.json
+node scripts/handbook.mjs build --manifest dashboard.json --output dashboard-guide.html
+```
+
+Append `--json` for machine-readable output.
+
+## Manifest field assignments
+
+Existing role-prefixed strings remain valid:
+
+```json
+"fields": ["Y-axis: Team[Name]"]
+```
+
+Use structured assignments when field metadata is known:
+
+```json
+"fields": [
+  {
+    "role": "yAxis",
+    "field": "Team[Name]",
+    "kind": "column",
+    "aggregation": null
+  }
+]
+```
+
+Supported kinds are `column`, `measure`, `hierarchy`, and `unknown`. The generator preserves the raw manifest, loads exact-release evidence into top-level `buildRoles`, and emits canonical `visuals[].fieldAssignments`. Unknown or incomplete role semantics warn rather than fail; malformed structured objects fail validation. Do not infer field kinds, aggregation, capacity, or requiredness when the manifest and curated evidence leave them unknown.
+
+## Evidence model
+
+- **Available** means curated evidence says the visual is expected in the Insert gallery for this release family.
+- **Legacy hidden** means old report JSON may still contain the visual, but new reports should use its replacement.
+- **Renamed** means the visible gallery label differs from the internal schema identifier, such as Matrix and `pivotTable`.
+- **Schema present** proves only that the pinned schema defines the object; it does not prove gallery presence.
+- **Exact live UI** means the stated label or field role was observed in the complete target build, locale, and interaction mode recorded under `references/build/`.
+- **Build-role pending** means the modeled visual was not exposed as a direct icon during that inspection; it is not an unsupported claim.
+- **Live UI pending** means the exact target build has not yet been opened and checked.
+
+## Guardrails
+
+- Target the complete build number. Schema-family compatibility is not exact-build certification.
+- Distinguish current Card (`cardVisual`) from legacy Card (`card`) and Multi-row card (`multiRowCard`).
+- Treat Matrix as the user-facing name for the `pivotTable` schema object.
+- Power BI Desktop optimized for Report Server primarily saves PBIX. Do not promise PBIP/PBIR round-trip authoring in this edition.
+- A generated handbook documents manual authoring; it does not directly edit the PBIX report canvas.
+
+## References
+
+- Release profiles: `references/releases/`
+- Exact-build field-role evidence: `references/build/`
+- Curated visual status: `references/visuals/`
+- Format-pane guide mappings: `references/guides/`
+- Pinned Microsoft schema: `references/schemas/`

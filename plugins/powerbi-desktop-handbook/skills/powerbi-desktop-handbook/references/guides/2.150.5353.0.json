@@ -1,0 +1,13 @@
+{
+  "release": "2.150.5353.0",
+  "verification": "schema-verified-live-ui-pending",
+  "entries": {
+    "page": { "insertPath": "Select the report page", "formatRoot": "Format page", "sections": ["Page information", "Canvas settings", "Canvas background", "Wallpaper", "Filter pane", "Filter cards"] },
+    "shape": { "insertPath": "Insert > Shapes", "formatRoot": "Format shape", "sections": ["Shape", "Style", "General > Properties"] },
+    "textbox": { "insertPath": "Insert > Text box", "formatRoot": "Format text box", "sections": ["Text", "Effects", "General > Properties"] },
+    "cardVisual": { "insertPath": "Visualizations > Card", "formatRoot": "Format visual", "sections": ["Callout values", "Cards", "Reference labels", "General"] },
+    "card": { "insertPath": "Open an existing legacy Card", "formatRoot": "Format visual", "sections": ["Callout value", "Category label", "General"] },
+    "clusteredBarChart": { "insertPath": "Visualizations > Clustered bar chart", "formatRoot": "Format visual", "sections": ["Bars", "Data labels", "Y-axis", "X-axis", "General"] },
+    "pivotTable": { "insertPath": "Visualizations > Matrix", "formatRoot": "Format visual", "sections": ["Grid", "Row headers", "Column headers", "Values", "Subtotals", "General"] }
+  }
+}

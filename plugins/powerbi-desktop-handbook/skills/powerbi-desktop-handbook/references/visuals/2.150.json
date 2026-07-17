@@ -1,0 +1,118 @@
+{
+  "statuses": {
+    "available": "Expected in the Insert gallery for this release family.",
+    "legacy-hidden": "Supported in existing report definitions but not recommended for new insertion.",
+    "renamed": "The gallery name differs from the internal schema identifier.",
+    "surface": "A report surface or authoring object, not a data visual.",
+    "schema-present": "Defined by the theme schema; gallery presence is unverified.",
+    "unsupported": "Not supported in this release profile."
+  },
+  "gallery": [
+    { "id": "barChart", "label": "Stacked bar chart", "icon": "stacked-bar" },
+    { "id": "columnChart", "label": "Stacked column chart", "icon": "stacked-column" },
+    { "id": "clusteredBarChart", "label": "Clustered bar chart", "icon": "clustered-bar" },
+    { "id": "clusteredColumnChart", "label": "Clustered column chart", "icon": "clustered-column" },
+    { "id": "hundredPercentStackedBarChart", "label": "100% stacked bar chart", "icon": "hundred-bar" },
+    { "id": "hundredPercentStackedColumnChart", "label": "100% stacked column chart", "icon": "hundred-column" },
+    { "id": "lineChart", "label": "Line chart", "icon": "line" },
+    { "id": "areaChart", "label": "Area chart", "icon": "area" },
+    { "id": "stackedAreaChart", "label": "Stacked area chart", "icon": "stacked-area" },
+    { "id": "hundredPercentStackedAreaChart", "label": "100% stacked area chart", "icon": "hundred-area" },
+    { "id": "lineStackedColumnComboChart", "label": "Line and stacked column chart", "icon": "combo-stacked" },
+    { "id": "lineClusteredColumnComboChart", "label": "Line and clustered column chart", "icon": "combo-clustered" },
+    { "id": "ribbonChart", "label": "Ribbon chart", "icon": "ribbon" },
+    { "id": "waterfallChart", "label": "Waterfall chart", "icon": "waterfall" },
+    { "id": "funnel", "label": "Funnel chart", "icon": "funnel" },
+    { "id": "scatterChart", "label": "Scatter chart", "icon": "scatter" },
+    { "id": "pieChart", "label": "Pie chart", "icon": "pie" },
+    { "id": "donutChart", "label": "Donut chart", "icon": "donut" },
+    { "id": "treemap", "label": "Treemap", "icon": "treemap" },
+    { "id": "map", "label": "Map", "icon": "map" },
+    { "id": "filledMap", "label": "Filled map", "icon": "filled-map" },
+    { "id": "azureMap", "label": "Azure Maps", "icon": "azure-map" },
+    { "id": "shapeMap", "label": "Shape map", "icon": "shape-map" },
+    { "id": "gauge", "label": "Gauge", "icon": "gauge" },
+    { "id": "cardVisual", "label": "Card", "icon": "card" },
+    { "id": "kpi", "label": "KPI", "icon": "kpi" },
+    { "id": "slicer", "label": "Slicer", "icon": "slicer" },
+    { "id": "tableEx", "label": "Table", "icon": "table" },
+    { "id": "pivotTable", "label": "Matrix", "icon": "matrix" },
+    { "id": "scriptVisual", "label": "R script visual", "icon": "r-script" },
+    { "id": "pythonVisual", "label": "Python visual", "icon": "python" },
+    { "id": "keyDriversVisual", "label": "Key influencers", "icon": "key-influencers" },
+    { "id": "decompositionTreeVisual", "label": "Decomposition tree", "icon": "decomposition" },
+    { "id": "qnaVisual", "label": "Q&A", "icon": "qna" },
+    { "id": "aiNarratives", "label": "Smart narrative", "icon": "narrative" },
+    { "id": "scorecard", "label": "Scorecard", "icon": "scorecard" },
+    { "id": "rdlVisual", "label": "Paginated report visual", "icon": "paginated" }
+  ],
+  "visuals": [
+    {
+      "id": "cardVisual",
+      "label": "Card",
+      "aliases": ["current card", "new card", "unified card", "multi-value card"],
+      "status": "available",
+      "replacementFor": ["card", "multiRowCard"],
+      "evidence": ["Microsoft visual documentation", "2.150 theme schema"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "card",
+      "label": "Card (legacy)",
+      "aliases": ["legacy card", "old card"],
+      "status": "legacy-hidden",
+      "replacement": "cardVisual",
+      "evidence": ["2.150 theme schema", "existing PBIR project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "multiRowCard",
+      "label": "Multi-row card (legacy)",
+      "aliases": ["multi row card"],
+      "status": "legacy-hidden",
+      "replacement": "cardVisual",
+      "evidence": ["2.150 theme schema", "Microsoft visual documentation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "clusteredBarChart",
+      "label": "Clustered bar chart",
+      "aliases": ["bar chart", "horizontal bar chart"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "pivotTable",
+      "label": "Matrix",
+      "aliases": ["matrix visual", "pivot table", "pivottable"],
+      "status": "renamed",
+      "evidence": ["2.150 theme schema", "Microsoft visual documentation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "textbox",
+      "label": "Text box",
+      "aliases": ["text", "text box"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "shape",
+      "label": "Shape",
+      "aliases": ["rectangle", "line", "shape object"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "page",
+      "label": "Canvas / page",
+      "aliases": ["page", "canvas", "report page"],
+      "status": "surface",
+      "evidence": ["2.150 theme schema"],
+      "liveUi": "pending"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "powerbi-desktop-handbook",
+  "version": "0.1.0",
+  "description": "Version-aware Power BI Desktop visual catalog and offline handbook generator.",
+  "author": {
+    "name": "Pakorn K.",
+    "url": "https://github.com/pakorn269"
+  },
+  "homepage": "https://github.com/pakorn269/powerbi-desktop-handbook",
+  "repository": "https://github.com/pakorn269/powerbi-desktop-handbook",
+  "license": "MIT",
+  "keywords": ["power-bi", "report-server", "visuals", "handbook", "pbix"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Power BI Desktop Handbook",
+    "shortDescription": "Version-aware Power BI visual guidance.",
+    "longDescription": "Checks visual availability and formatting against a pinned Desktop release, then validates and generates offline build handbooks.",
+    "developerName": "Pakorn K.",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": "Use $powerbi-desktop-handbook to verify a visual or setting for my Desktop build and generate an offline guide.",
+    "brandColor": "#5B2C6F"
+  }
+}
