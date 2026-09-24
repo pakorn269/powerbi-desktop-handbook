@@ -83,6 +83,37 @@
       },
       "additionalProperties": false
     },
+    "theme": {
+      "type": "object",
+      "description": "Optional Power BI Report Theme configuration.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Theme name."
+        },
+        "dataColors": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+          "description": "Palette of primary visual data colors."
+        },
+        "background": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Canvas background color."
+        },
+        "foreground": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Primary foreground/font color."
+        },
+        "tableAccent": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Table and matrix header accent color."
+        }
+      },
+      "additionalProperties": true
+    },
     "snapshot": {
       "type": "array",
       "description": "Headline metrics displayed on the overview page.",

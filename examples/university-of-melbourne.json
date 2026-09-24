@@ -1,0 +1,178 @@
+{
+  "$schema": "../schemas/manifest.schema.json",
+  "id": "university-of-melbourne",
+  "title": "University of Melbourne Theme",
+  "organization": "University of Melbourne",
+  "subtitle": "Sales, Freight, and Unit Distribution dashboard styled with the University of Melbourne brand theme in Power BI Desktop.",
+  "release": "2.150.5353.0",
+  "page": {
+    "width": 1280,
+    "height": 720,
+    "background": "#F5F8FC"
+  },
+  "brand": {
+    "ink": "#003366",
+    "accent": "#003366",
+    "secondary": "#214F80"
+  },
+  "theme": {
+    "name": "University of Melbourne",
+    "dataColors": [
+      "#003366",
+      "#A8C5E0",
+      "#214F80",
+      "#A4D3E3",
+      "#82A1BD",
+      "#366996",
+      "#304E64",
+      "#004576",
+      "#666666",
+      "#000000",
+      "#0C304A",
+      "#0076DE"
+    ],
+    "background": "#F5F8FC",
+    "foreground": "#003366",
+    "tableAccent": "#214F80"
+  },
+  "snapshot": [
+    { "label": "Total Sales", "value": "$40,640,973.42" },
+    { "label": "Total Units", "value": "58,952" },
+    { "label": "Active Brands", "value": "10 Brands" },
+    { "label": "Top Category", "value": "Computers Accessories (15.2K)" }
+  ],
+  "visuals": [
+    {
+      "id": "header-theme",
+      "title": "University of Melbourne Theme",
+      "type": "cardVisual",
+      "position": { "x": 320, "y": 15, "width": 640, "height": 50 },
+      "fields": ["Measures[Report Title]"],
+      "settings": [
+        { "path": "Format visual > General > Header", "label": "Title", "value": "University of Melbourne Theme" },
+        { "path": "Format visual > General > Header", "label": "Font family", "value": "Segoe UI Light" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "Transparent" }
+      ],
+      "notes": [
+        "Executive report header displaying title 'University of Melbourne Theme' in elegant light typography."
+      ]
+    },
+    {
+      "id": "table-brand-sales",
+      "title": "Sales by Brand & Color",
+      "type": "tableEx",
+      "position": { "x": 15, "y": 75, "width": 375, "height": 630 },
+      "fields": [
+        { "role": "columns", "field": "Product[BrandName]", "kind": "column" },
+        { "role": "columns", "field": "Product[Color]", "kind": "column" },
+        { "role": "columns", "field": "Measures[SalesAmount]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Style presets", "label": "Style", "value": "Bold header" },
+        { "path": "Format visual > Visual > Column headers", "label": "Background color", "value": "#003366" },
+        { "path": "Format visual > Visual > Column headers", "label": "Text color", "value": "#FFFFFF" },
+        { "path": "Format visual > Visual > Totals", "label": "Total", "value": "On" },
+        { "path": "Format visual > Visual > Totals", "label": "Background color", "value": "#003366" },
+        { "path": "Format visual > Visual > Totals", "label": "Text color", "value": "#FFFFFF" }
+      ],
+      "notes": [
+        "Tabular inventory of SalesAmount by BrandName and Color with dark navy headers and total row ($40,640,973.42)."
+      ]
+    },
+    {
+      "id": "treemap-freight",
+      "title": "Freight by BrandName and Class",
+      "type": "treemap",
+      "position": { "x": 405, "y": 75, "width": 435, "height": 290 },
+      "fields": [
+        { "role": "category", "field": "Product[BrandName]", "kind": "column" },
+        { "role": "details", "field": "Product[Class]", "kind": "column" },
+        { "role": "values", "field": "Measures[Freight]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Colors", "label": "Data colors", "value": "University of Melbourne palette" },
+        { "path": "Format visual > Visual > Data labels", "label": "Data labels", "value": "On" }
+      ],
+      "notes": [
+        "Nested proportional rectangles displaying freight spend across brand names partitioned by product class (Regular, Deluxe, Economy)."
+      ]
+    },
+    {
+      "id": "line-units",
+      "title": "Units by Year, Quarter, Month and Class",
+      "type": "lineChart",
+      "position": { "x": 855, "y": 75, "width": 410, "height": 290 },
+      "fields": [
+        { "role": "xAxis", "field": "Calendar[Date Hierarchy]", "kind": "hierarchy" },
+        { "role": "yAxis", "field": "Measures[Units]", "kind": "measure" },
+        { "role": "legend", "field": "Product[Class]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top left" },
+        { "path": "Format visual > Visual > Lines", "label": "Stroke width", "value": "2 px" },
+        { "path": "Format visual > Visual > Y-axis", "label": "Display units", "value": "Thousands (K)" }
+      ],
+      "notes": [
+        "Multi-series timeline tracking unit sales volume across product classes (Deluxe, Economy, Regular) from 2012 to 2015."
+      ]
+    },
+    {
+      "id": "column-units-subcategory",
+      "title": "Units by SubCategory and SubCategory",
+      "type": "clusteredColumnChart",
+      "position": { "x": 405, "y": 380, "width": 860, "height": 325 },
+      "fields": [
+        { "role": "xAxis", "field": "Product[SubCategory]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[Units]", "kind": "measure" },
+        { "role": "legend", "field": "Product[SubCategory]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top left" },
+        { "path": "Format visual > Visual > Columns", "label": "Color by", "value": "Theme dataColors" },
+        { "path": "Format visual > Visual > Y-axis", "label": "Display units", "value": "Thousands (K)" }
+      ],
+      "notes": [
+        "Ranked clustered columns displaying unit volumes across 8 key subcategories, colored using the University of Melbourne palette."
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "title": "Prepare & Theme",
+      "items": [
+        "Open Microsoft Power BI Desktop optimized for Report Server (January 2026, build 2.150.5353.0).",
+        "Navigate to View > Themes > Browse for themes and import 'university-of-melbourne.theme.json'.",
+        "Verify canvas background color is set to #F5F8FC at 0% transparency (Format page > Canvas background).",
+        "Confirm report dimensions are set to 16:9 widescreen (1280 x 720 px)."
+      ]
+    },
+    {
+      "title": "Visual Construction",
+      "items": [
+        "Insert Text Box or Card visual at [320, 15, 640, 50] for report header 'University of Melbourne Theme'.",
+        "Insert Table visual at [15, 75, 375, 630] and add Product[BrandName], Product[Color], and Measures[SalesAmount] to Columns.",
+        "Configure Table visual headers with #003366 background and white text, and enable Total row ($40,640,973.42).",
+        "Insert Treemap visual at [405, 75, 435, 290] and add Product[BrandName] to Category, Product[Class] to Details, and Measures[Freight] to Values.",
+        "Insert Line chart visual at [855, 75, 410, 290], assigning Calendar[Date Hierarchy] to X-axis, Measures[Units] to Y-axis, and Product[Class] to Legend.",
+        "Insert Clustered column chart visual at [405, 380, 860, 325], assigning Product[SubCategory] to X-axis, Measures[Units] to Y-axis, and Product[SubCategory] to Legend."
+      ]
+    },
+    {
+      "title": "Formatting & Polish",
+      "items": [
+        "Verify visual palette mappings against the theme's 12 dataColors.",
+        "Verify alignment and 15px/20px gutters across table, treemap, line chart, and column chart.",
+        "Format numeric display units on Cartesian axes to display in Thousands (K).",
+        "Test cross-filtering by clicking a brand in the Table or Treemap and observing responsive updates across charts."
+      ]
+    }
+  ],
+  "acceptance": [
+    "Theme JSON imports cleanly with #003366 primary, #214F80 secondary, and #F5F8FC canvas background.",
+    "Table visual displays all brand colors with grand total $40,640,973.42.",
+    "Treemap visual correctly groups freight by BrandName and subdivides into product classes.",
+    "Line chart displays 3 distinct trend lines (Deluxe, Economy, Regular) over 2012-2015 timeline.",
+    "Clustered column chart displays 8 descending category bars with individual theme colors.",
+    "All visuals maintain precise coordinates with zero page boundary clipping."
+  ]
+}

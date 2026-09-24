@@ -28,6 +28,11 @@ const examples = [
     manifest: path.join(root, 'examples', 'sales-scorecard.json'),
     committed: path.join(root, 'examples', 'sales-scorecard-guide.html'),
     name: 'sales-scorecard-guide.html'
+  },
+  {
+    manifest: path.join(root, 'examples', 'university-of-melbourne.json'),
+    committed: path.join(root, 'examples', 'university-of-melbourne-guide.html'),
+    name: 'university-of-melbourne-guide.html'
   }
 ];
 

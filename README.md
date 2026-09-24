@@ -73,10 +73,10 @@ Commands accept `--json`. Release-aware commands accept `--release VERSION`; the
 
 ## Building a handbook
 
-Start with `examples/sample-dashboard.json`, `examples/executive-sales-dashboard.json`, or `examples/sales-scorecard.json`. A manifest defines:
+Start with `examples/sample-dashboard.json`, `examples/executive-sales-dashboard.json`, `examples/sales-scorecard.json`, or `examples/university-of-melbourne.json`. A manifest defines:
 
 - Handbook identity, title, organization, subtitle, and target release.
-- Report page dimensions and brand colors.
+- Report page dimensions, brand colors, and optional custom theme definitions (`dataColors`, `background`, `foreground`, `tableAccent`).
 - Snapshot metrics displayed on the overview canvas.
 - Visual types, coordinates, fields, format-pane paths, values, and notes.
 - Ordered preparation steps and final acceptance checks.
@@ -153,6 +153,9 @@ Users can view and evaluate dashboard templates or samples before actually build
 
 ![Interactive Canvas Layout Preview — Sales Scorecard](docs/mockup_canvas_preview_1790236814064.png)
 *Executive Sales Scorecard with 9 visuals: chromeless title banner with status indicators, vertical list slicers, conditional bar formatting, dual CY vs. PY trend lines with KPI growth headers, and regional manager P&L matrix.*
+
+![Interactive Canvas Layout Preview — University of Melbourne Theme](docs/university_of_melbourne_preview_1790238224655.png)
+*University of Melbourne Theme dashboard: chromeless title banner, 19-row brand/color sales inventory table with navy headers and sticky totals, brand/class freight treemap, 3-series unit timeline, and 8-color subcategory clustered column chart.*
 
 ![Interactive Canvas Layout Preview — Executive Sales Dashboard](docs/executive_sales_preview_7_visuals_1790223984450.png)
 *Executive Sales & Performance Dashboard with 7 multi-family visuals, metric cards, donut charts, and live layout adjuster controls.*

@@ -14,6 +14,7 @@ This repository provides a version-aware Power BI Desktop visual catalog and a g
 - `examples/sample-dashboard-guide.html` is generated from `examples/sample-dashboard.json` and must be rebuilt after generator, template, or relevant reference changes.
 - `examples/executive-sales-dashboard-guide.html` is generated from `examples/executive-sales-dashboard.json` and serves as a rich multi-visual template reference.
 - `examples/sales-scorecard-guide.html` is generated from `examples/sales-scorecard.json` and models a 9-visual executive sales scorecard with conditional formatting and profit & loss matrix.
+- `examples/university-of-melbourne-guide.html` is generated from `examples/university-of-melbourne.json` and `examples/university-of-melbourne.theme.json`, demonstrating report theme support and dedicated treemap, table, line, and column visual mockups.
 - `schemas/manifest.schema.json` is the formal JSON Schema for handbook manifests. Update it when the manifest contract changes.
 
 ## Required workflow
