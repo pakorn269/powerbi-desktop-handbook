@@ -1,5 +1,9 @@
 # Power BI Desktop Handbook
 
+[![CI](https://github.com/pakorn269/powerbi-desktop-handbook/actions/workflows/ci.yml/badge.svg)](https://github.com/pakorn269/powerbi-desktop-handbook/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/pakorn269/powerbi-desktop-handbook)](https://github.com/pakorn269/powerbi-desktop-handbook/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Build version-aware, standalone report-construction handbooks that feel like Microsoft Power BI Desktop in the browser.
 
 The project combines a pinned Power BI visual schema, curated release evidence, manifest validation, and an offline HTML generator. Its first release profile targets **Microsoft Power BI Desktop optimized for Power BI Report Server — January 2026**, build `2.150.5353.0`.

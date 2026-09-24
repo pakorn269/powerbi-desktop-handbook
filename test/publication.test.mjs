@@ -29,6 +29,7 @@ const baseBlocked = [
     allowedPaths: new Set([
       'LICENSE',
       'README.md',
+      '.github/workflows/ci.yml',
       'plugins/powerbi-desktop-handbook/.codex-plugin/plugin.json'
     ])
   },
