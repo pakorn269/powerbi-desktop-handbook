@@ -1,0 +1,496 @@
+{
+  "$schema": "../schemas/manifest.schema.json",
+  "id": "opportunity-analysis",
+  "title": "Opportunity Analysis Sample",
+  "organization": "Department of Veterans Affairs (VADS-aligned)",
+  "subtitle": "Opportunity count, revenue analysis, and monthly pipeline dashboard styled with the Veterans Affairs colorblind-accessible theme in Power BI Desktop.",
+  "release": "2.150.5353.0",
+  "page": {
+    "width": 1024,
+    "height": 768,
+    "background": "#FFFFFF"
+  },
+  "brand": {
+    "ink": "#162e51",
+    "accent": "#005ea2",
+    "secondary": "#71767a"
+  },
+  "theme": {
+    "name": "Veterans Affairs PBI Theme",
+    "dataColors": [
+      "#005ea2",
+      "#e5a000",
+      "#00bde3",
+      "#54278f",
+      "#d54309",
+      "#71767a",
+      "#73b3e7",
+      "#ffbe2e",
+      "#162e51",
+      "#a9aeb1",
+      "#dfe1e2"
+    ],
+    "background": "#FFFFFF",
+    "foreground": "#1B1B1B",
+    "tableAccent": "#005EA2"
+  },
+  "snapshot": [
+    { "label": "Total Revenue", "value": "$109,153,825" },
+    { "label": "Factored Revenue", "value": "$48,957,216" },
+    { "label": "Opportunity Count", "value": "31" },
+    { "label": "Avg Opportunity", "value": "390" }
+  ],
+  "visuals": [
+    {
+      "id": "header-q1",
+      "title": "Opportunity Count Overview",
+      "type": "cardVisual",
+      "position": { "x": 12, "y": 10, "width": 484, "height": 32 },
+      "fields": ["Measures[Header Title Q1]"],
+      "settings": [
+        { "path": "Format visual > General > Header", "label": "Title", "value": "Opportunity Count Overview" },
+        { "path": "Format visual > General > Header", "label": "Font family", "value": "Georgia" }
+      ],
+      "notes": [
+        "Header title banner for Quadrant 1 styled with Georgia serif typography in #162e51."
+      ]
+    },
+    {
+      "id": "slicer-partner-q1",
+      "title": "Partner Driven",
+      "type": "slicer",
+      "position": { "x": 12, "y": 48, "width": 86, "height": 78 },
+      "fields": [
+        { "role": "field", "field": "Partner[Partner Driven]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Slicer settings", "label": "Style", "value": "Vertical list" }
+      ],
+      "notes": [
+        "Filter opportunities by partner involvement (No, Yes)."
+      ]
+    },
+    {
+      "id": "card-opp-count-q1",
+      "title": "Opportunity Count",
+      "type": "cardVisual",
+      "position": { "x": 12, "y": 134, "width": 86, "height": 68 },
+      "fields": [
+        { "role": "value", "field": "Measures[Opportunity Count]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Callout value", "label": "Font family", "value": "Segoe UI Semibold" },
+        { "path": "Format visual > Visual > Callout value", "label": "Color", "value": "#005ea2" }
+      ],
+      "notes": [
+        "Total active opportunity count callout (31)."
+      ]
+    },
+    {
+      "id": "pie-opp-region-q1",
+      "title": "Opportunity Count by Region",
+      "type": "pieChart",
+      "position": { "x": 104, "y": 48, "width": 128, "height": 154 },
+      "fields": [
+        { "role": "legend", "field": "Region[Region]", "kind": "column" },
+        { "role": "values", "field": "Measures[Opportunity Count]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Right" }
+      ],
+      "notes": [
+        "Proportional breakdown of opportunity volume across Central, East, and West territories."
+      ]
+    },
+    {
+      "id": "bar-opp-stage-q1",
+      "title": "Opportunity Count by Sales Stage and Sales Stage",
+      "type": "clusteredBarChart",
+      "position": { "x": 238, "y": 48, "width": 258, "height": 154 },
+      "fields": [
+        { "role": "yAxis", "field": "SalesStage[Sales Stage]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Opportunity Count]", "kind": "measure" },
+        { "role": "legend", "field": "SalesStage[Sales Stage]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top right" }
+      ],
+      "notes": [
+        "Horizontal distribution of opportunities across sales stages: Lead, Qualify, Solution, Proposal, Finalize."
+      ]
+    },
+    {
+      "id": "col-opp-partner-size-q1",
+      "title": "Opportunity Count by Partner Driven and Opportunity Size",
+      "type": "clusteredColumnChart",
+      "position": { "x": 12, "y": 210, "width": 238, "height": 154 },
+      "fields": [
+        { "role": "xAxis", "field": "Partner[Partner Driven]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[Opportunity Count]", "kind": "measure" },
+        { "role": "legend", "field": "Opportunity[Opportunity Size]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top left" }
+      ],
+      "notes": [
+        "Opportunity volume by partner involvement grouped into Small, Medium, and Large deal sizes."
+      ]
+    },
+    {
+      "id": "col-opp-partner-stage-q1",
+      "title": "Opportunity Count by Partner Driven and Sales Stage",
+      "type": "clusteredColumnChart",
+      "position": { "x": 256, "y": 210, "width": 240, "height": 154 },
+      "fields": [
+        { "role": "xAxis", "field": "Partner[Partner Driven]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[Opportunity Count]", "kind": "measure" },
+        { "role": "legend", "field": "SalesStage[Sales Stage]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top right" }
+      ],
+      "notes": [
+        "Comparison of partner-driven deal stages highlighting Solution and Proposal stages."
+      ]
+    },
+    {
+      "id": "header-q2",
+      "title": "Revenue Analysis",
+      "type": "cardVisual",
+      "position": { "x": 518, "y": 10, "width": 494, "height": 32 },
+      "fields": ["Measures[Header Title Q2]"],
+      "settings": [
+        { "path": "Format visual > General > Header", "label": "Title", "value": "Revenue Analysis" },
+        { "path": "Format visual > General > Header", "label": "Font family", "value": "Georgia" }
+      ],
+      "notes": [
+        "Header title banner for Quadrant 2 styled with Georgia serif typography in #162e51."
+      ]
+    },
+    {
+      "id": "pie-rev-region-q2",
+      "title": "Revenue by Region",
+      "type": "pieChart",
+      "position": { "x": 518, "y": 48, "width": 146, "height": 154 },
+      "fields": [
+        { "role": "legend", "field": "Region[Region]", "kind": "column" },
+        { "role": "values", "field": "Measures[Revenue]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Right" }
+      ],
+      "notes": [
+        "Share of total revenue generated across Central, East, and West sales regions."
+      ]
+    },
+    {
+      "id": "col-rev-stage-partner-q2",
+      "title": "Revenue by Sales Stage and Partner Driven",
+      "type": "clusteredColumnChart",
+      "position": { "x": 670, "y": 48, "width": 342, "height": 154 },
+      "fields": [
+        { "role": "xAxis", "field": "SalesStage[Sales Stage]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[Revenue]", "kind": "measure" },
+        { "role": "legend", "field": "Partner[Partner Driven]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top right" },
+        { "path": "Format visual > Visual > Y-axis", "label": "Display units", "value": "Millions (M)" }
+      ],
+      "notes": [
+        "Revenue volume by sales stage comparing direct versus partner-driven opportunities."
+      ]
+    },
+    {
+      "id": "card-rev-total-q2",
+      "title": "Revenue",
+      "type": "cardVisual",
+      "position": { "x": 518, "y": 210, "width": 126, "height": 48 },
+      "fields": [
+        { "role": "value", "field": "Measures[Revenue]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Callout value", "label": "Color", "value": "#005ea2" }
+      ],
+      "notes": [
+        "Total unweighted pipeline revenue ($109,153,825)."
+      ]
+    },
+    {
+      "id": "card-factored-rev-q2",
+      "title": "Factored Revenue",
+      "type": "cardVisual",
+      "position": { "x": 518, "y": 263, "width": 126, "height": 48 },
+      "fields": [
+        { "role": "value", "field": "Measures[Factored Revenue]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Callout value", "label": "Color", "value": "#005ea2" }
+      ],
+      "notes": [
+        "Probability-weighted factored revenue ($48,957,216)."
+      ]
+    },
+    {
+      "id": "card-opp-count-q2",
+      "title": "Opportunity Count",
+      "type": "cardVisual",
+      "position": { "x": 518, "y": 316, "width": 126, "height": 48 },
+      "fields": [
+        { "role": "value", "field": "Measures[Opportunity Count]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Callout value", "label": "Color", "value": "#005ea2" }
+      ],
+      "notes": [
+        "Active count summary callout (31)."
+      ]
+    },
+    {
+      "id": "bar-avg-rev-partner-size-q2",
+      "title": "Avg Revenue by Partner Driven and Opportunity Size",
+      "type": "clusteredBarChart",
+      "position": { "x": 650, "y": 210, "width": 362, "height": 154 },
+      "fields": [
+        { "role": "yAxis", "field": "Partner[Partner Driven]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Avg Revenue]", "kind": "measure" },
+        { "role": "legend", "field": "Opportunity[Opportunity Size]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top right" },
+        { "path": "Format visual > Visual > X-axis", "label": "Display units", "value": "Millions (M)" }
+      ],
+      "notes": [
+        "Average deal size by partner involvement and deal tier (Small, Medium, Large)."
+      ]
+    },
+    {
+      "id": "header-q3",
+      "title": "Upcoming Opportunities By Month",
+      "type": "cardVisual",
+      "position": { "x": 12, "y": 384, "width": 484, "height": 32 },
+      "fields": ["Measures[Header Title Q3]"],
+      "settings": [
+        { "path": "Format visual > General > Header", "label": "Title", "value": "Upcoming Opportunities By Month" },
+        { "path": "Format visual > General > Header", "label": "Font family", "value": "Georgia" }
+      ],
+      "notes": [
+        "Header title banner for Quadrant 3 styled with Georgia serif typography in #162e51."
+      ]
+    },
+    {
+      "id": "card-opp-count-q3",
+      "title": "Oppor...",
+      "type": "cardVisual",
+      "position": { "x": 12, "y": 422, "width": 44, "height": 48 },
+      "fields": [
+        { "role": "value", "field": "Measures[Opportunity Count]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Callout value", "label": "Color", "value": "#005ea2" }
+      ],
+      "notes": [
+        "Monthly opportunity metric (31)."
+      ]
+    },
+    {
+      "id": "card-avg-opp-q3",
+      "title": "Avg O...",
+      "type": "cardVisual",
+      "position": { "x": 12, "y": 476, "width": 44, "height": 48 },
+      "fields": [
+        { "role": "value", "field": "Measures[Avg Opportunity]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Callout value", "label": "Color", "value": "#005ea2" }
+      ],
+      "notes": [
+        "Average opportunity metric (390)."
+      ]
+    },
+    {
+      "id": "col-factored-rev-size-q3",
+      "title": "Factored Revenue by Opportunity Size",
+      "type": "clusteredColumnChart",
+      "position": { "x": 62, "y": 422, "width": 188, "height": 144 },
+      "fields": [
+        { "role": "xAxis", "field": "Opportunity[Opportunity Size]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[Factored Revenue]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Columns", "label": "Color", "value": "#005ea2" },
+        { "path": "Format visual > Visual > Y-axis", "label": "Display units", "value": "Millions (M)" }
+      ],
+      "notes": [
+        "Weighted revenue distribution across deal sizes: Large ($15M), Medium ($28M), Small ($8M)."
+      ]
+    },
+    {
+      "id": "bar-avg-rev-partner-stage-q3",
+      "title": "Avg Revenue by Partner Driven and Sales Stage",
+      "type": "clusteredBarChart",
+      "position": { "x": 256, "y": 422, "width": 240, "height": 144 },
+      "fields": [
+        { "role": "yAxis", "field": "Partner[Partner Driven]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Avg Revenue]", "kind": "measure" },
+        { "role": "legend", "field": "SalesStage[Sales Stage]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top" },
+        { "path": "Format visual > Visual > X-axis", "label": "Display units", "value": "Millions (M)" }
+      ],
+      "notes": [
+        "Average revenue by partner channel across all active sales stages."
+      ]
+    },
+    {
+      "id": "slicer-month-q3",
+      "title": "Month",
+      "type": "slicer",
+      "position": { "x": 12, "y": 574, "width": 44, "height": 184 },
+      "fields": [
+        { "role": "field", "field": "Date[Month]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Slicer settings", "label": "Style", "value": "Vertical list" }
+      ],
+      "notes": [
+        "Calendar month filter checklist with February pre-selected."
+      ]
+    },
+    {
+      "id": "stacked-col-opp-month-stage-q3",
+      "title": "Opportunity Count by Month and Sales Stage",
+      "type": "hundredPercentStackedColumnChart",
+      "position": { "x": 62, "y": 574, "width": 434, "height": 184 },
+      "fields": [
+        { "role": "xAxis", "field": "Date[Month]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[Opportunity Count]", "kind": "measure" },
+        { "role": "legend", "field": "SalesStage[Sales Stage]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top left" }
+      ],
+      "notes": [
+        "100% stacked stage proportions for selected month (February) across Lead, Qualify, Solution, Proposal, Finalize."
+      ]
+    },
+    {
+      "id": "header-q4",
+      "title": "Opportunity Count by Region and Stage",
+      "type": "cardVisual",
+      "position": { "x": 518, "y": 384, "width": 494, "height": 32 },
+      "fields": ["Measures[Header Title Q4]"],
+      "settings": [
+        { "path": "Format visual > General > Header", "label": "Title", "value": "Opportunity Count by Region and Stage" },
+        { "path": "Format visual > General > Header", "label": "Font family", "value": "Georgia" }
+      ],
+      "notes": [
+        "Header title banner for Quadrant 4 styled with Georgia serif typography in #162e51."
+      ]
+    },
+    {
+      "id": "pie-opp-region-q4",
+      "title": "Opportunity Count by Region",
+      "type": "pieChart",
+      "position": { "x": 518, "y": 422, "width": 226, "height": 144 },
+      "fields": [
+        { "role": "legend", "field": "Region[Region]", "kind": "column" },
+        { "role": "values", "field": "Measures[Opportunity Count]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Right" }
+      ],
+      "notes": [
+        "Regional opportunity distribution between West, Central, and East."
+      ]
+    },
+    {
+      "id": "bar-opp-region-stage-q4",
+      "title": "Opportunity Count by Region and Sales Stage",
+      "type": "clusteredBarChart",
+      "position": { "x": 750, "y": 422, "width": 262, "height": 144 },
+      "fields": [
+        { "role": "yAxis", "field": "Region[Region]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Opportunity Count]", "kind": "measure" },
+        { "role": "legend", "field": "SalesStage[Sales Stage]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top right" }
+      ],
+      "notes": [
+        "Stage breakdown across Central, East, and West showing highest volume in Solution and Proposal."
+      ]
+    },
+    {
+      "id": "bar-opp-partner-q4",
+      "title": "Opportunity Count by Partner Driven",
+      "type": "clusteredBarChart",
+      "position": { "x": 518, "y": 574, "width": 226, "height": 184 },
+      "fields": [
+        { "role": "yAxis", "field": "Partner[Partner Driven]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Opportunity Count]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Bars", "label": "Color", "value": "#005ea2" }
+      ],
+      "notes": [
+        "Total opportunity split between Direct (No: 18) and Partner-driven (Yes: 13)."
+      ]
+    },
+    {
+      "id": "bar-opp-region-size-q4",
+      "title": "Opportunity Count by Region and Opportunity Size",
+      "type": "clusteredBarChart",
+      "position": { "x": 750, "y": 574, "width": 262, "height": 184 },
+      "fields": [
+        { "role": "yAxis", "field": "Region[Region]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Opportunity Count]", "kind": "measure" },
+        { "role": "legend", "field": "Opportunity[Opportunity Size]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Legend", "label": "Position", "value": "Top right" }
+      ],
+      "notes": [
+        "Regional deal distribution categorized by Small, Medium, and Large opportunity sizes."
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "title": "Prepare & Theme",
+      "items": [
+        "Open Microsoft Power BI Desktop optimized for Report Server (January 2026, build 2.150.5353.0).",
+        "Navigate to View > Themes > Browse for themes and import 'veterans-affairs.theme.json'.",
+        "Verify canvas dimensions are set to standard 4:3 ratio (1024 x 768 px).",
+        "Verify white background (#FFFFFF) and 5px rounded visual borders with #A9AEB1 outline."
+      ]
+    },
+    {
+      "title": "Quadrant Construction",
+      "items": [
+        "Construct Quadrant 1 (Opportunity Count Overview) at [12, 10, 484, 354] with Partner Driven slicer, 31 callout, regional pie chart, and stage breakdown bars.",
+        "Construct Quadrant 2 (Revenue Analysis) at [518, 10, 494, 354] with regional revenue pie chart, sales stage columns ($40M max), KPI summary cards ($109M / $48.9M / 31), and avg revenue bars.",
+        "Construct Quadrant 3 (Upcoming Opportunities By Month) at [12, 384, 484, 374] with upcoming KPI cards, factored revenue by size columns, monthly slicer, and 100% stacked column stage breakdown.",
+        "Construct Quadrant 4 (Opportunity Count by Region and Stage) at [518, 384, 494, 374] with regional pie chart, stage breakdown bars, partner-driven split (18 vs 13), and size distribution bars."
+      ]
+    },
+    {
+      "title": "Colorblind Accessibility & Polish",
+      "items": [
+        "Verify colorblind accessibility compliance using the deuteranopia-friendly palette (Navy #005EA2, Amber #E5A000, Cyan #00BDE3, Purple #54278F, Rust #D54309).",
+        "Ensure Georgia serif titles are applied to all four quadrant banners in #162E51.",
+        "Format currency axes on revenue charts to display in Millions ($M).",
+        "Test cross-filtering across partner-driven slicer and calendar month slicer."
+      ]
+    }
+  ],
+  "acceptance": [
+    "Theme JSON imports with full USWDS/VADS deuteranopia-accessible color palette.",
+    "Report canvas renders at 1024 x 768 px with clean 4-quadrant layout and zero visual overlaps.",
+    "All 26 visuals maintain exact placement bounds within their respective quadrant frames.",
+    "KPI cards accurately reflect $109,153,825 total revenue and $48,957,216 factored revenue.",
+    "Pie and donut charts display 3 distinct regional slices with accessible contrast.",
+    "Clustered columns and bars align with the 11 theme dataColors across all sales stages and deal sizes."
+  ]
+}

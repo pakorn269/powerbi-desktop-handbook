@@ -12,7 +12,7 @@ Use the bundled CLI and pinned evidence before answering questions about whether
 1. Run `node scripts/handbook.mjs detect --json` to compare the installed Report Server Desktop executable with the target release.
 2. Run `node scripts/handbook.mjs lookup --release 2.150.5353.0 --visual "<name>" --json` before giving visual-specific instructions.
 3. State the evidence level: exact live UI, schema family, Microsoft documentation, or project observation.
-4. For a build guide, author a manifest following `../../../examples/sample-dashboard.json`, `../../../examples/executive-sales-dashboard.json`, `../../../examples/sales-scorecard.json`, or `../../../examples/university-of-melbourne.json`, using legacy or structured field assignments as appropriate; validate it, then build the standalone HTML file.
+4. For a build guide, author a manifest following `../../../examples/sample-dashboard.json`, `../../../examples/executive-sales-dashboard.json`, `../../../examples/sales-scorecard.json`, `../../../examples/university-of-melbourne.json`, or `../../../examples/opportunity-analysis.json`, using legacy or structured field assignments as appropriate; validate it, then build the standalone HTML file.
 5. Open the generated handbook to review the **Canvas Preview** before authoring in Power BI Desktop. Verify visual proportions, test Mockup vs. Blueprint wireframe modes, check alignment with the 40px grid, and adjust visual positions or dimensions using the live layout adjuster. Export updated manifest JSON if adjustments are made.
 6. Mark instructions as live-UI-pending unless the exact executable build has been inspected.
 

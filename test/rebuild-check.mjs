@@ -33,6 +33,11 @@ const examples = [
     manifest: path.join(root, 'examples', 'university-of-melbourne.json'),
     committed: path.join(root, 'examples', 'university-of-melbourne-guide.html'),
     name: 'university-of-melbourne-guide.html'
+  },
+  {
+    manifest: path.join(root, 'examples', 'opportunity-analysis.json'),
+    committed: path.join(root, 'examples', 'opportunity-analysis-guide.html'),
+    name: 'opportunity-analysis-guide.html'
   }
 ];
 

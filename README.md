@@ -151,6 +151,9 @@ Users can view and evaluate dashboard templates or samples before actually build
 - **Live Layout Adjuster**: Select any visual on the canvas, adjust its position or size with immediate visual feedback, and copy the updated layout JSON to your clipboard.
 - **Alignment Grid**: Toggleable 40px grid overlay for precise margin and gutter alignment.
 
+![Interactive Canvas Layout Preview — Opportunity Analysis (Veterans Affairs Theme)](docs/opportunity_analysis_preview.png)
+*Opportunity Analysis Sample dashboard with 26 visuals across 4 quadrants in 4:3 ratio: Georgia serif quadrant banners, regional pie charts with slice callouts, deuteranopia-accessible clustered columns/bars, 100% stacked column stage breakdown, vertical list month/partner slicers, and revenue KPI cards styled under the Veterans Affairs PBI theme.*
+
 ![Interactive Canvas Layout Preview — Sales Scorecard](docs/mockup_canvas_preview_1790236814064.png)
 *Executive Sales Scorecard with 9 visuals: chromeless title banner with status indicators, vertical list slicers, conditional bar formatting, dual CY vs. PY trend lines with KPI growth headers, and regional manager P&L matrix.*
 
