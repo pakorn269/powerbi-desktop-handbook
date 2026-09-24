@@ -293,6 +293,14 @@ The publication audit scans repository filenames and text content, including gen
 - Microsoft report-theme schema: <https://github.com/microsoft/powerbi-desktop-samples/tree/main/Report%20Theme%20JSON%20Schema>
 - Microsoft visual documentation: <https://learn.microsoft.com/power-bi/visuals/power-bi-visualization-types-for-reports-and-q-and-a>
 
+## Attribution & Trademarks
+
+All product names, logos, brands, and registered trademarks referenced in this repository are the property of their respective owners.
+
+- **Microsoft, Power BI, and Microsoft Fabric** are trademarks or registered trademarks of Microsoft Corporation.
+- The **University of Melbourne Theme** sample is inspired by a community contribution published in the [Microsoft Fabric Community Themes Gallery](https://community.fabric.microsoft.com/discussions/ThemesGallery/university-of-melbourne/163417). It is included strictly for educational, illustrative, and technical demonstration purposes within this open-source project.
+- Reference to any specific organizations, brands, or trademarks does not constitute or imply endorsement, sponsorship, or affiliation.
+
 ## Author
 
 Created and maintained by [Pakorn K.](https://github.com/pakorn269). Employer and organizational affiliations are intentionally omitted from this public project.

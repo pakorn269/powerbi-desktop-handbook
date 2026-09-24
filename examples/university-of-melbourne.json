@@ -2,8 +2,8 @@
   "$schema": "../schemas/manifest.schema.json",
   "id": "university-of-melbourne",
   "title": "University of Melbourne Theme",
-  "organization": "University of Melbourne",
-  "subtitle": "Sales, Freight, and Unit Distribution dashboard styled with the University of Melbourne brand theme in Power BI Desktop.",
+  "organization": "Community Themes Gallery",
+  "subtitle": "Sales, Freight, and Unit Distribution dashboard styled with the University of Melbourne community theme from the Microsoft Fabric Themes Gallery.",
   "release": "2.150.5353.0",
   "page": {
     "width": 1280,
