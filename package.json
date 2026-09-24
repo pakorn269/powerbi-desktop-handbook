@@ -12,7 +12,9 @@
     "audit:public": "node --test test/publication.test.mjs",
     "test": "node --test",
     "validate": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs validate --manifest examples/sample-dashboard.json && node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs validate --manifest examples/executive-sales-dashboard.json",
-    "model-contract": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs model-contract --manifest examples/sample-dashboard.json"
+    "model-contract": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs model-contract --manifest examples/sample-dashboard.json",
+    "install:antigravity": "node scripts/install-antigravity.mjs",
+    "uninstall:antigravity": "node scripts/install-antigravity.mjs --uninstall"
   },
   "engines": { "node": ">=20" },
   "license": "MIT"

@@ -25,6 +25,7 @@ node scripts/handbook.mjs lookup --release 2.150.5353.0 --visual Matrix
 node scripts/handbook.mjs validate --manifest dashboard.json
 node scripts/handbook.mjs build --manifest dashboard.json --output dashboard-guide.html
 node scripts/handbook.mjs model-contract --manifest dashboard.json
+npm run install:antigravity
 ```
 
 Append `--json` for machine-readable output.

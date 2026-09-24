@@ -38,6 +38,20 @@ node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/ha
 
 Open `examples/sample-dashboard-guide.html` directly in a browser. The generated handbook works through `file://` and does not require a local server.
 
+## Antigravity IDE integration
+
+Install the plugin and agent skill directly into your local Antigravity IDE environment:
+
+```powershell
+# Install plugin globally (~/.gemini/config/plugins/) and for this workspace (.agents/plugins/)
+npm run install:antigravity
+
+# Or uninstall when needed
+npm run uninstall:antigravity
+```
+
+Once installed, the `powerbi-desktop-handbook` skill is automatically discovered and loaded by Antigravity IDE across all workspaces and conversations.
+
 ## CLI
 
 The entrypoint is:

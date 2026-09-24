@@ -35,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Bi-directional cross-navigation linking preview visuals to Visual Plan construction cards and Visual Gallery build roles.
 - Executive Sales & Performance Dashboard template (`examples/executive-sales-dashboard.json`) and generated handbook (`examples/executive-sales-dashboard-guide.html`) with 7 visuals across multiple chart families.
 - Sample manifest (`examples/sample-dashboard.json`) and generated handbook (`examples/sample-dashboard-guide.html`).
+- Antigravity IDE plugin manifest (`plugins/powerbi-desktop-handbook/plugin.json`) and automated installation/uninstallation script (`scripts/install-antigravity.mjs`) supporting global and workspace discovery.
 - `CONTRIBUTING.md` with evidence model documentation and development workflow.
 
 [0.1.0]: https://github.com/pakorn269/powerbi-desktop-handbook/releases/tag/v0.1.0

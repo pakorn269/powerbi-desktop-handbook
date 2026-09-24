@@ -17,6 +17,14 @@ const ignoredDirectories = new Set([
 function collectFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
     if (entry.isDirectory() && ignoredDirectories.has(entry.name)) return [];
+    if (entry.isSymbolicLink()) {
+      try {
+        const stat = fs.statSync(path.join(directory, entry.name));
+        if (stat.isDirectory()) return [];
+      } catch {
+        return [];
+      }
+    }
     const absolute = path.join(directory, entry.name);
     return entry.isDirectory() ? collectFiles(absolute) : [absolute];
   });
@@ -33,7 +41,8 @@ const baseBlocked = [
       'CONTRIBUTING.md',
       'schemas/manifest.schema.json',
       '.github/workflows/ci.yml',
-      'plugins/powerbi-desktop-handbook/.codex-plugin/plugin.json'
+      'plugins/powerbi-desktop-handbook/.codex-plugin/plugin.json',
+      'plugins/powerbi-desktop-handbook/plugin.json'
     ])
   },
   {

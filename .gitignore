@@ -15,3 +15,5 @@ local/
 *.private.html
 *.customer.json
 *.customer.html
+
+.agents/plugins/powerbi-desktop-handbook
