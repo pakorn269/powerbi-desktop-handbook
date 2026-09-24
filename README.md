@@ -149,6 +149,7 @@ Users can view and evaluate dashboard templates or samples before actually build
 - **Realistic Mockup Mode**: Renders KPI cards, bar/column charts with conditional formatting, donut charts, dual-line trend graphs with KPI growth headers and data callouts, vertical list checkbox slicers, chromeless title banners with status legends, and hierarchical matrices with SVG territory maps and negative value callouts.
 - **Blueprint Wireframe Mode**: Shows technical bounding boxes, exact `[X, Y, W, H]` coordinates, visual type badges, and clean field role mappings.
 - **Live Layout Adjuster**: Select any visual on the canvas, adjust its position or size with immediate visual feedback, and copy the updated layout JSON to your clipboard.
+- **Offline Image Export**: One-click download of the canvas preview as a high-resolution 2× crisp PNG image (.png) or scalable vector graphic (.svg) in either Mockup or Blueprint mode for presentation decks, specification reviews, and stakeholder sign-off.
 - **Alignment Grid**: Toggleable 40px grid overlay for precise margin and gutter alignment.
 
 ![Interactive Canvas Layout Preview — Opportunity Analysis (Veterans Affairs Theme)](docs/opportunity_analysis_preview.png)

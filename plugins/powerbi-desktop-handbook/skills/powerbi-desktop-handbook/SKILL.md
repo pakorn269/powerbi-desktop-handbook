@@ -69,6 +69,7 @@ Generated handbooks provide a 2D canvas layout preview (`#preview`) so report de
 - **Blueprint Mode**: Displays technical wireframes with exact coordinate bounding boxes `[X, Y, W, H]`, dimensions, visual type badges, and clean field role mappings.
 - **Alignment Grid**: Toggleable 40px grid overlay for verifying margins, gutters, and alignment across rows and columns.
 - **Live Layout Adjuster**: Select any visual on the canvas or via the picker to modify X, Y, Width, and Height inputs in real time, with instant 2D canvas repositioning.
+- **Offline Image Export**: Direct one-click export of the canvas layout as a high-resolution 2× crisp PNG image (.png) or scalable vector graphic (.svg) in either Mockup or Blueprint mode for reviews, design specs, and presentation decks.
 - **Export Manifest JSON**: Copies the updated manifest layout directly to the clipboard, allowing changes to be reflected in manifest source files prior to PBIX report creation.
 - **Direct Navigation**: Clicking any preview visual provides one-click navigation to its Visual Plan card (`go('visual-' + i)`) or Visual Gallery build-role reference (`selectGallery()`).
 

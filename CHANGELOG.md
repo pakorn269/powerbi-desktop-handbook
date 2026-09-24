@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Interactive 2D canvas layout preview (`#preview`) with responsive aspect-ratio scaling to match report page settings (16:9, 4:3, or custom pixel dimensions).
 - Dual preview modes: Realistic Mockup mode (styled cards with KPI values/sparklines, column/bar charts, donut charts with SVG arc slices, matrix tables, and line paths) and Blueprint wireframe mode with exact `[X, Y, W, H]` bounding boxes.
 - Live layout adjuster enabling designers to select any visual and adjust X, Y, Width, and Height dimensions with real-time 2D canvas feedback.
+- Offline canvas preview image export (`#toggle-export`) providing one-click download for high-resolution 2× crisp PNG images (`.png`) via HTML5 Canvas 2D and scalable vector graphics (`.svg`) via standalone SVG serialization with embedded typography, honoring active Mockup or Blueprint modes and toggleable alignment grids.
 - One-click manifest layout JSON export to clipboard for immediate synchronization back to manifest files before building in Power BI Desktop.
 - Toggleable 40px alignment grid overlay for verifying margins and gutters.
 - Bi-directional cross-navigation linking preview visuals to Visual Plan construction cards and Visual Gallery build roles.
