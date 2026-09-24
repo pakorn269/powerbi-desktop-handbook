@@ -34,6 +34,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Toggleable 40px alignment grid overlay for verifying margins and gutters.
 - Bi-directional cross-navigation linking preview visuals to Visual Plan construction cards and Visual Gallery build roles.
 - Executive Sales & Performance Dashboard template (`examples/executive-sales-dashboard.json`) and generated handbook (`examples/executive-sales-dashboard-guide.html`) with 7 visuals across multiple chart families.
+- Executive Sales Scorecard reference dashboard (`examples/sales-scorecard.json`) and generated handbook (`examples/sales-scorecard-guide.html`) with 9 visuals: header title banner with conditional status indicators, vertical list slicers for customer segment and calendar year, clustered bar charts with unprofitable highlight bars, dual CY vs. PY trend lines with KPI growth deltas and monthly callouts, and profit & loss matrix with regional manager hierarchy, SVG territory maps, and negative value callouts.
+- Enhanced canvas preview engine with specialized pure-CSS and inline-SVG renderers for slicers, chromeless header banners, dual trend charts with KPI deltas, and regional hierarchy matrices.
+- Blueprint wireframe mode field name resolution using normalized `displayFields(v)` to format structured role/field mappings cleanly without `[object Object]`.
 - Sample manifest (`examples/sample-dashboard.json`) and generated handbook (`examples/sample-dashboard-guide.html`).
 - Antigravity IDE plugin manifest (`plugins/powerbi-desktop-handbook/plugin.json`) and automated installation/uninstallation script (`scripts/install-antigravity.mjs`) supporting global and workspace discovery.
 - `CONTRIBUTING.md` with evidence model documentation and development workflow.

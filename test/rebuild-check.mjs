@@ -23,6 +23,11 @@ const examples = [
     manifest: path.join(root, 'examples', 'executive-sales-dashboard.json'),
     committed: path.join(root, 'examples', 'executive-sales-dashboard-guide.html'),
     name: 'executive-sales-dashboard-guide.html'
+  },
+  {
+    manifest: path.join(root, 'examples', 'sales-scorecard.json'),
+    committed: path.join(root, 'examples', 'sales-scorecard-guide.html'),
+    name: 'sales-scorecard-guide.html'
   }
 ];
 

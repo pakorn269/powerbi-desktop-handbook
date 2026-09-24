@@ -73,7 +73,7 @@ Commands accept `--json`. Release-aware commands accept `--release VERSION`; the
 
 ## Building a handbook
 
-Start with `examples/sample-dashboard.json`. A manifest defines:
+Start with `examples/sample-dashboard.json`, `examples/executive-sales-dashboard.json`, or `examples/sales-scorecard.json`. A manifest defines:
 
 - Handbook identity, title, organization, subtitle, and target release.
 - Report page dimensions and brand colors.
@@ -146,8 +146,8 @@ Manifest brand colors apply to report content; the surrounding application chrom
 
 Users can view and evaluate dashboard templates or samples before actually building them in Power BI Desktop. Seeing the layout beforehand ensures the design meets user requirements, avoiding wasted time and build rework:
 
-- **Realistic Mockup Mode**: Renders KPI cards, bar charts, line graphs, donut charts, and matrix tables with formatted mock metrics and brand styling.
-- **Blueprint Wireframe Mode**: Shows technical bounding boxes, exact `[X, Y, W, H]` coordinates, and visual type badges.
+- **Realistic Mockup Mode**: Renders KPI cards, bar/column charts with conditional formatting, donut charts, dual-line trend graphs with KPI growth headers and data callouts, vertical list checkbox slicers, chromeless title banners with status legends, and hierarchical matrices with SVG territory maps and negative value callouts.
+- **Blueprint Wireframe Mode**: Shows technical bounding boxes, exact `[X, Y, W, H]` coordinates, visual type badges, and clean field role mappings.
 - **Live Layout Adjuster**: Select any visual on the canvas, adjust its position or size with immediate visual feedback, and copy the updated layout JSON to your clipboard.
 - **Alignment Grid**: Toggleable 40px grid overlay for precise margin and gutter alignment.
 

@@ -13,6 +13,7 @@ This repository provides a version-aware Power BI Desktop visual catalog and a g
 - `visuals[].fields` may mix legacy strings and structured `{ role, field, kind, aggregation }` assignments. Keep the raw manifest backward compatible; normalized assignments belong in generated `visuals[].fieldAssignments`, and the release contract belongs in top-level `buildRoles`.
 - `examples/sample-dashboard-guide.html` is generated from `examples/sample-dashboard.json` and must be rebuilt after generator, template, or relevant reference changes.
 - `examples/executive-sales-dashboard-guide.html` is generated from `examples/executive-sales-dashboard.json` and serves as a rich multi-visual template reference.
+- `examples/sales-scorecard-guide.html` is generated from `examples/sales-scorecard.json` and models a 9-visual executive sales scorecard with conditional formatting and profit & loss matrix.
 - `schemas/manifest.schema.json` is the formal JSON Schema for handbook manifests. Update it when the manifest contract changes.
 
 ## Required workflow

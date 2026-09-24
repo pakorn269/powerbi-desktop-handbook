@@ -1,0 +1,249 @@
+{
+  "$schema": "../schemas/manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "sales-scorecard",
+  "title": "Sales Scorecard",
+  "organization": "Northwind Logistics & Supply",
+  "subtitle": "Executive sales scorecard tracking product performance, state and regional margins, manager profitability, and comparative CY vs PY trends.",
+  "release": "2.150.5353.0",
+  "page": {
+    "width": 1280,
+    "height": 720,
+    "background": "#F4F5F7"
+  },
+  "brand": {
+    "ink": "#1A202C",
+    "accent": "#E53E3E",
+    "secondary": "#718096"
+  },
+  "snapshot": [
+    { "label": "CY Sales", "value": "$734,016" },
+    { "label": "Sales Growth", "value": "+20.6%" },
+    { "label": "CY Profit", "value": "$89,467" },
+    { "label": "Profit Growth", "value": "+38.2%" }
+  ],
+  "visuals": [
+    {
+      "id": "header-scorecard",
+      "title": "SALES SCORECARD",
+      "type": "cardVisual",
+      "position": { "x": 20, "y": 15, "width": 500, "height": 65 },
+      "fields": ["Measures[Scorecard Title]"],
+      "settings": [
+        { "path": "Format visual > General > Header", "label": "Title", "value": "SALES SCORECARD" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "Executive title banner displaying report name 'SALES SCORECARD' and conditional formatting legend (coral red #FF5A5F: Unprofitable, slate grey #718096: Profitable)."
+      ]
+    },
+    {
+      "id": "slicer-segment",
+      "title": "Segment",
+      "type": "slicer",
+      "position": { "x": 960, "y": 15, "width": 150, "height": 65 },
+      "fields": [
+        { "role": "field", "field": "Customers[Segment]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Slicer settings > Options", "label": "Style", "value": "Vertical list" },
+        { "path": "Format visual > Visual > Slicer settings > Selection", "label": "Multi-select with CTRL", "value": "Off" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "Filters all scorecard visuals by Customer Segment (Consumer, Corporate, Home Office).",
+        "Enable checkboxes for clean executive multi-selection."
+      ]
+    },
+    {
+      "id": "slicer-year",
+      "title": "Year",
+      "type": "slicer",
+      "position": { "x": 1120, "y": 15, "width": 140, "height": 65 },
+      "fields": [
+        { "role": "field", "field": "Calendar[Year]", "kind": "column" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Slicer settings > Options", "label": "Style", "value": "Vertical list" },
+        { "path": "Format visual > Visual > Slicer settings > Selection", "label": "Single select", "value": "Off" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "Defaults to reporting year 2014, with prior-year comparative metrics computing dynamically."
+      ]
+    },
+    {
+      "id": "bar-product",
+      "title": "How are we performing by Product?",
+      "type": "clusteredBarChart",
+      "position": { "x": 20, "y": 95, "width": 290, "height": 150 },
+      "fields": [
+        { "role": "yAxis", "field": "Products[Product]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Total Sales]", "kind": "measure" },
+        { "role": "tooltips", "field": "Measures[Profit]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Data labels", "label": "Data labels", "value": "On" },
+        { "path": "Format visual > Visual > Bars > Color > Conditional formatting", "label": "Format style", "value": "Rules: IF Measures[Is Profitable] = 0 THEN #FF5A5F ELSE #718096" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "Horizontal clustered bar chart showing sales for Forms ($272K), Supplies ($247K), and Training ($215K).",
+        "Unprofitable product lines render in coral red (#FF5A5F); profitable lines render in slate grey (#718096)."
+      ]
+    },
+    {
+      "id": "bar-region",
+      "title": "How are we performing by Region?",
+      "type": "clusteredBarChart",
+      "position": { "x": 20, "y": 260, "width": 290, "height": 175 },
+      "fields": [
+        { "role": "yAxis", "field": "Geography[Region]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Total Sales]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Data labels", "label": "Data labels", "value": "On" },
+        { "path": "Format visual > Visual > Bars > Color", "label": "Color", "value": "#718096" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "Shows regional volume distribution across West ($41K), East ($33K), South ($9K), and Central ($7K)."
+      ]
+    },
+    {
+      "id": "bar-state",
+      "title": "How are we performing by State?",
+      "type": "clusteredBarChart",
+      "position": { "x": 325, "y": 95, "width": 315, "height": 340 },
+      "fields": [
+        { "role": "yAxis", "field": "Geography[State]", "kind": "column" },
+        { "role": "xAxis", "field": "Measures[Total Sales]", "kind": "measure" },
+        { "role": "tooltips", "field": "Measures[Profit]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Data labels", "label": "Data labels", "value": "On" },
+        { "path": "Format visual > Visual > Bars > Color > Conditional formatting", "label": "Format style", "value": "Rules: IF Measures[Is Profitable] = 0 THEN #FF5A5F ELSE #718096" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "Ranks top 11 states by sales volume with California ($147K), New York ($94K), and Washington ($66K) leading.",
+        "Highlights underperforming states where cumulative profit is negative with coral red bars."
+      ]
+    },
+    {
+      "id": "line-sales-trend",
+      "title": "What is our Sales Trend?",
+      "type": "lineChart",
+      "position": { "x": 655, "y": 95, "width": 605, "height": 255 },
+      "fields": [
+        { "role": "xAxis", "field": "Calendar[Month]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[CY Sales]", "kind": "measure" },
+        { "role": "yAxis", "field": "Measures[PY Sales]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Data labels", "label": "Data labels", "value": "On" },
+        { "path": "Format visual > Visual > Lines > Colors", "label": "CY Sales Color", "value": "#2D3748" },
+        { "path": "Format visual > Visual > Lines > Colors", "label": "PY Sales Color", "value": "#CBD5E0" },
+        { "path": "Format visual > General > Title > Subtitle", "label": "Subtitle / KPI Growth", "value": "▲ 20.6% | CY: $734,016 | PY: $608,523" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "12-month timeline comparing Current Year Sales (dark line, peaking at $112K in Nov) against Prior Year (light line).",
+        "Includes executive growth indicator showing +20.6% YoY growth."
+      ]
+    },
+    {
+      "id": "matrix-profit-loss",
+      "title": "Where are we losing money?",
+      "type": "pivotTable",
+      "position": { "x": 20, "y": 450, "width": 620, "height": 255 },
+      "fields": [
+        { "role": "rows", "field": "Products[Product Category]", "kind": "column" },
+        { "role": "columns", "field": "Geography[Region]", "kind": "column" },
+        { "role": "columns", "field": "Salesforce[Regional Manager]", "kind": "column" },
+        { "role": "values", "field": "Measures[Profit]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Cell elements > Background color", "label": "Conditional formatting", "value": "Rules on Measures[Profit]: If value < 0 THEN #FF5A5F" },
+        { "path": "Format visual > Visual > Values", "label": "Alternate background color", "value": "#F7FAFC" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "Matrix breaking down profitability across 14 product categories against 4 regional managers (Benjamin Swanson - West, William McIntosh - Central, Melonie Wiesner - South, Sara Kaminski - East).",
+        "Highlights unprofitable category-manager intersections in coral red (#FF5A5F) for rapid executive intervention."
+      ]
+    },
+    {
+      "id": "line-profit-trend",
+      "title": "What is our Profit Trend?",
+      "type": "lineChart",
+      "position": { "x": 655, "y": 365, "width": 605, "height": 340 },
+      "fields": [
+        { "role": "xAxis", "field": "Calendar[Month]", "kind": "column" },
+        { "role": "yAxis", "field": "Measures[CY Profit]", "kind": "measure" },
+        { "role": "yAxis", "field": "Measures[PY Profit]", "kind": "measure" }
+      ],
+      "settings": [
+        { "path": "Format visual > Visual > Data labels", "label": "Data labels", "value": "On" },
+        { "path": "Format visual > Visual > Lines > Colors", "label": "CY Profit Color", "value": "#2D3748" },
+        { "path": "Format visual > Visual > Lines > Colors", "label": "PY Profit Color", "value": "#CBD5E0" },
+        { "path": "Format visual > General > Title > Subtitle", "label": "Subtitle / KPI Growth", "value": "▲ 38.2% | CY: $89,467 | PY: $64,740" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#F4F5F7" }
+      ],
+      "notes": [
+        "12-month net profit trend line demonstrating strong performance in Q4 and +38.2% overall profit expansion ($89.5K vs $64.7K)."
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. Data Model & DAX Preparation",
+      "items": [
+        "Import the star-schema tables: Sales (Fact), Calendar (Date dimension), Products, Geography, Salesforce, and Customers.",
+        "Create measure: [Scorecard Title] = \"SALES SCORECARD\"",
+        "Create measure: [Total Sales] = SUM(Sales[SalesAmount])",
+        "Create measure: [Profit] = SUM(Sales[ProfitAmount])",
+        "Create measure: [CY Sales] = CALCULATE([Total Sales], DATESYTD(Calendar[Date]))",
+        "Create measure: [PY Sales] = CALCULATE([Total Sales], SAMEPERIODLASTYEAR(Calendar[Date]))",
+        "Create measure: [Sales Growth Pct] = DIVIDE([CY Sales] - [PY Sales], [PY Sales])",
+        "Create measure: [CY Profit] = CALCULATE([Profit], DATESYTD(Calendar[Date]))",
+        "Create measure: [PY Profit] = CALCULATE([Profit], SAMEPERIODLASTYEAR(Calendar[Date]))",
+        "Create measure: [Profit Growth Pct] = DIVIDE([CY Profit] - [PY Profit], [PY Profit])",
+        "Create measure: [Is Profitable] = IF([Profit] >= 0, 1, 0)"
+      ]
+    },
+    {
+      "title": "2. Page & Header Assembly",
+      "items": [
+        "In Power BI Desktop, set Page Size to 16:9 (1280 x 720 px) and Canvas Background to #F4F5F7 (0% transparency).",
+        "Add report header text box or card 'SALES SCORECARD' at (X: 20, Y: 15, W: 420, H: 65) with status legend indicators (Unprofitable: #FF5A5F, Profitable: #718096).",
+        "Insert Slicer for Customers[Segment] at (X: 970, Y: 15, W: 140, H: 65) with vertical list style.",
+        "Insert Slicer for Calendar[Year] at (X: 1125, Y: 15, W: 135, H: 65) with vertical list style."
+      ]
+    },
+    {
+      "title": "3. Volume & Regional Visuals",
+      "items": [
+        "Insert Clustered Bar Chart 'How are we performing by Product?' at (X: 20, Y: 95, W: 290, H: 150). Set Y-axis to Products[Product], X-axis to [Total Sales], and apply conditional bar color formatting using [Is Profitable].",
+        "Insert Clustered Bar Chart 'How are we performing by Region?' at (X: 20, Y: 260, W: 290, H: 175). Set Y-axis to Geography[Region] and X-axis to [Total Sales].",
+        "Insert Clustered Bar Chart 'How are we performing by State?' at (X: 325, Y: 95, W: 315, H: 340). Set Y-axis to Geography[State], X-axis to [Total Sales], and apply conditional bar color formatting using [Is Profitable]."
+      ]
+    },
+    {
+      "title": "4. Comparative Trends & Matrix",
+      "items": [
+        "Insert Line Chart 'What is our Sales Trend?' at (X: 655, Y: 95, W: 605, H: 255). Set X-axis to Calendar[Month], Y-axis to [CY Sales] and [PY Sales]. Turn Data labels On and configure title subtitle callout.",
+        "Insert Matrix 'Where are we losing money?' at (X: 20, Y: 450, W: 620, H: 255). Set Rows to Products[Product Category], Columns to Geography[Region] and Salesforce[Regional Manager], and Values to [Profit].",
+        "Configure Matrix Cell Elements: apply Background Color conditional formatting with rule: IF [Profit] < 0 THEN #FF5A5F.",
+        "Insert Line Chart 'What is our Profit Trend?' at (X: 655, Y: 365, W: 605, H: 340). Set X-axis to Calendar[Month], Y-axis to [CY Profit] and [PY Profit]. Turn Data labels On and configure title subtitle callout."
+      ]
+    }
+  ],
+  "acceptance": [
+    "Segment and Year slicers successfully cross-filter all 6 data visuals.",
+    "Unprofitable products, states, and matrix cells consistently display the coral red (#FF5A5F) warning color.",
+    "Line charts correctly display both Current Year and Prior Year data points with clear visual hierarchy.",
+    "Matrix table columns display regional hierarchy with assigned regional managers.",
+    "Canvas layout conforms precisely to the 1280 x 720 spatial grid without overlapping or truncated visuals."
+  ]
+}
