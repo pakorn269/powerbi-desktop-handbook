@@ -8,7 +8,8 @@
     "handbook": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs",
     "audit:public": "node --test test/publication.test.mjs",
     "test": "node --test",
-    "validate": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs validate --manifest examples/sample-dashboard.json"
+    "validate": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs validate --manifest examples/sample-dashboard.json",
+    "model-contract": "node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs model-contract --manifest examples/sample-dashboard.json"
   },
   "engines": { "node": ">=20" },
   "license": "MIT"

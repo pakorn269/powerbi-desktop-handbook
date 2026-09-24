@@ -49,7 +49,7 @@
     }
   ],
   "sections": [
-    { "title": "Prepare", "items": ["Open the report in the exact target Desktop build.", "Confirm the semantic model fields and measures exist."] },
+    { "title": "Prepare", "items": ["Open the report in the exact target Desktop build.", "Confirm the semantic model fields and measures exist (or verify with powerbi-modeling-mcp)."] },
     { "title": "Build", "items": ["Set the page to 1280 × 720.", "Add visuals in the order listed below."] },
     { "title": "Verify", "items": ["Check alignment, titles, filtering, and empty states.", "Save a PBIX copy and test it on the target Report Server."] }
   ],

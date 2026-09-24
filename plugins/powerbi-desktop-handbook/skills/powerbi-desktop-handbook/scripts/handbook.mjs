@@ -324,6 +324,124 @@ export function buildHandbook(manifestFile, outputFile) {
   return { ok: true, output: destination, warnings: validation.warnings, visuals: manifest.visuals.length };
 }
 
+export function parseFieldReference(rawField) {
+  if (typeof rawField !== 'string') return null;
+  const trimmed = rawField.trim();
+  if (!trimmed) return null;
+
+  // Unscoped DAX measure syntax: [Measure Name]
+  const unscopedMatch = trimmed.match(/^\[([^\]]+)\]$/);
+  if (unscopedMatch) {
+    return {
+      table: null,
+      name: unscopedMatch[1],
+      expression: trimmed,
+      isMeasure: true
+    };
+  }
+
+  // Table-scoped syntax: Table[Column] or 'Table Name'[Column]
+  const tableScopedMatch = trimmed.match(/^(?:'([^']+)'|([A-Za-z0-9_]+))\[([^\]]+)\]$/);
+  if (tableScopedMatch) {
+    const table = tableScopedMatch[1] ?? tableScopedMatch[2];
+    const name = tableScopedMatch[3];
+    const isExplicitMeasureTable = ['measures', '_measures', 'measure'].includes(table.toLowerCase());
+    return {
+      table,
+      name,
+      expression: `${table}[${name}]`,
+      isMeasure: isExplicitMeasureTable
+    };
+  }
+
+  // Hierarchy notation: Table[Hierarchy].[Level] or 'Table'[Hierarchy].[Level]
+  const hierarchyMatch = trimmed.match(/^(?:'([^']+)'|([A-Za-z0-9_]+))\[([^\]]+)\]\.\[([^\]]+)\]$/);
+  if (hierarchyMatch) {
+    const table = hierarchyMatch[1] ?? hierarchyMatch[2];
+    const hierarchy = hierarchyMatch[3];
+    const level = hierarchyMatch[4];
+    return {
+      table,
+      name: `${hierarchy}.${level}`,
+      expression: `${table}[${hierarchy}].[${level}]`,
+      isMeasure: false,
+      isHierarchy: true
+    };
+  }
+
+  return {
+    table: null,
+    name: trimmed,
+    expression: trimmed,
+    isMeasure: false
+  };
+}
+
+export function extractModelRequirements(manifest, source = '<memory>') {
+  if (!manifest || typeof manifest !== 'object') throw new Error('Manifest must be a JSON object.');
+  const catalog = buildCatalog(manifest.release ?? '2.150.5353.0');
+  const buildRoles = loadBuildRoles(manifest.release ?? '2.150.5353.0');
+  const buildRolesById = new Map(buildRoles.visuals.map(visual => [visual.id, visual]));
+
+  const tables = new Set();
+  const columns = new Set();
+  const measures = new Set();
+  const fieldsMap = new Map();
+
+  for (const [vIndex, visual] of (manifest.visuals ?? []).entries()) {
+    const resolved = resolveVisual(catalog, visual.type);
+    const normalized = normalizeFieldAssignments(visual.fields, buildRolesById.get(resolved?.id), `visuals[${vIndex}].fields`);
+
+    for (const assignment of normalized.assignments) {
+      const parsed = parseFieldReference(assignment.field);
+      const fieldKey = assignment.field;
+
+      if (!fieldsMap.has(fieldKey)) {
+        fieldsMap.set(fieldKey, {
+          field: assignment.field,
+          table: parsed?.table ?? null,
+          name: parsed?.name ?? assignment.field,
+          kind: assignment.kind !== 'unknown'
+            ? assignment.kind
+            : parsed?.isMeasure
+              ? 'measure'
+              : parsed?.table
+                ? 'column'
+                : 'unknown',
+          visuals: []
+        });
+      }
+
+      const entry = fieldsMap.get(fieldKey);
+      entry.visuals.push({
+        visualId: visual.id,
+        visualType: visual.type,
+        role: assignment.role
+      });
+
+      if (parsed?.table) {
+        tables.add(parsed.table);
+      }
+
+      if (entry.kind === 'measure' || parsed?.isMeasure) {
+        measures.add(assignment.field);
+      } else if (entry.kind === 'column' || parsed?.table) {
+        columns.add(assignment.field);
+      }
+    }
+  }
+
+  return {
+    manifestId: manifest.id ?? null,
+    manifestTitle: manifest.title ?? null,
+    release: manifest.release ?? null,
+    tables: [...tables].sort((a, b) => a.localeCompare(b)),
+    columns: [...columns].sort((a, b) => a.localeCompare(b)),
+    measures: [...measures].sort((a, b) => a.localeCompare(b)),
+    fields: [...fieldsMap.values()]
+  };
+}
+
 function parseArgs(argv) {
   const args = { _: [] };
   for (let i = 0; i < argv.length; i++) {
@@ -345,7 +463,7 @@ function print(value, json) {
 
 async function main(argv) {
   const args = parseArgs(argv), command = args._[0], release = args.release ?? '2.150.5353.0';
-  if (!command || command === 'help' || args.help) return print(`Power BI Desktop Handbook\n\nCommands:\n  detect [--release VERSION]\n  catalog [--release VERSION] [--json]\n  lookup --visual NAME [--release VERSION] [--json]\n  validate --manifest FILE [--json]\n  build --manifest FILE --output FILE [--json]`, false);
+  if (!command || command === 'help' || args.help) return print(`Power BI Desktop Handbook\n\nCommands:\n  detect [--release VERSION]\n  catalog [--release VERSION] [--json]\n  lookup --visual NAME [--release VERSION] [--json]\n  validate --manifest FILE [--json]\n  build --manifest FILE --output FILE [--json]\n  model-contract --manifest FILE [--json]`, false);
   if (command === 'detect') return print(detectRelease(release), args.json);
   if (command === 'catalog') {
     const catalog = buildCatalog(release);
@@ -368,6 +486,28 @@ async function main(argv) {
   if (command === 'build') {
     if (!args.manifest || !args.output) throw new Error('--manifest and --output are required.');
     return print(buildHandbook(args.manifest, args.output), args.json);
+  }
+  if (command === 'model-contract') {
+    if (!args.manifest) throw new Error('--manifest is required.');
+    const file = path.resolve(args.manifest), result = extractModelRequirements(readJson(file), file);
+    if (args.json) return print(result, true);
+    const summary = [
+      `Semantic Model Contract: ${result.manifestTitle ?? result.manifestId ?? 'Report'}`,
+      `Target Release: ${result.release ?? 'unspecified'}`,
+      '',
+      `Required Tables (${result.tables.length}):`,
+      ...(result.tables.length ? result.tables.map(t => `  - ${t}`) : ['  (none)']),
+      '',
+      `Required Columns (${result.columns.length}):`,
+      ...(result.columns.length ? result.columns.map(c => `  - ${c}`) : ['  (none)']),
+      '',
+      `Required Measures (${result.measures.length}):`,
+      ...(result.measures.length ? result.measures.map(m => `  - ${m}`) : ['  (none)']),
+      '',
+      `Visual Field Mappings (${result.fields.length}):`,
+      ...result.fields.map(f => `  - ${f.field} [${f.kind}] -> ${f.visuals.map(v => `${v.visualId}.${v.role}`).join(', ')}`)
+    ].join('\n');
+    return print(summary, false);
   }
   throw new Error(`Unknown command: ${command}`);
 }

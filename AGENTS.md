@@ -23,6 +23,7 @@ npm run validate
 npm run audit:public
 node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs detect --json
 node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs lookup --release 2.150.5353.0 --visual Matrix --json
+node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs model-contract --manifest examples/sample-dashboard.json --json
 node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs build --manifest examples/sample-dashboard.json --output examples/sample-dashboard-guide.html --json
 ```
 
@@ -46,6 +47,7 @@ When changing visual guidance:
 - Keep current Card (`cardVisual`), legacy Card (`card`), and Multi-row card (`multiRowCard`) distinct.
 - Power BI Desktop optimized for Report Server primarily saves PBIX. Do not claim PBIP/PBIR round-trip authoring support for this edition.
 - A generated handbook documents manual report construction; it does not edit a PBIX canvas.
+- When pairing with [powerbi-modeling-mcp](https://github.com/microsoft/powerbi-modeling-mcp), keep the division of concerns clear: `powerbi-modeling-mcp` owns the semantic model layer (tables, columns, measures, DAX, relationships, TMDL), while this project owns report-level visual cataloging, field-well mapping, format settings, and construction checklists. Use `model-contract` to extract required model objects from a handbook manifest.
 
 ## Web-template constraints
 
@@ -60,6 +62,7 @@ When changing visual guidance:
 
 - Keep private customer or operational manifests outside this public-ready repository.
 - Store temporary private material only in ignored `private/`, `customer/`, `customers/`, or `local/` directories; do not force-add it.
+- Organization-specific publication audit blocklists belong in ignored `local/audit-blocklist.json`, `private/audit-blocklist.json`, or the `PBI_AUDIT_BLOCKLIST` environment variable. Never commit private employer or project terms directly to repository tests.
 - Do not edit the pinned schema without updating and verifying its SHA-256 value in the release profile.
 - Add or update tests for behavioral changes. Generated-file diffs alone are not sufficient verification.
 - Avoid unrelated formatting or mechanical rewrites, especially in the large pinned schema and generated HTML files.

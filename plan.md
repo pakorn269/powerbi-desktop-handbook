@@ -241,6 +241,7 @@ npm run validate
 npm run audit:public
 node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs detect --json
 node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs lookup --release 2.150.5353.0 --visual Matrix --json
+node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs model-contract --manifest examples/sample-dashboard.json --json
 node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs build --manifest examples/sample-dashboard.json --output examples/sample-dashboard-guide.html --json
 ```
 
@@ -280,5 +281,6 @@ Repository evidence:
 Microsoft documentation:
 
 - [Power BI report visualizations](https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-report-visualizations)
+- [Power BI Modeling MCP Server](https://github.com/microsoft/powerbi-modeling-mcp)
 - [On-object interaction](https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-on-object-interaction)
 - [Customize visual tooltips](https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-visual-tooltips)

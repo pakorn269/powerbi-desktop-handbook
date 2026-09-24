@@ -3,6 +3,8 @@ coverage/
 *.tmp
 *.log
 .DS_Store
+.env
+.env.*
 
 # Local or customer-specific handbook material
 private/

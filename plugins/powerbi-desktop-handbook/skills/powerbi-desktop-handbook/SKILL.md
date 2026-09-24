@@ -23,9 +23,18 @@ node scripts/handbook.mjs catalog --release 2.150.5353.0
 node scripts/handbook.mjs lookup --release 2.150.5353.0 --visual Matrix
 node scripts/handbook.mjs validate --manifest dashboard.json
 node scripts/handbook.mjs build --manifest dashboard.json --output dashboard-guide.html
+node scripts/handbook.mjs model-contract --manifest dashboard.json
 ```
 
 Append `--json` for machine-readable output.
+
+## Power BI Modeling MCP compatibility
+
+Use [@microsoft/powerbi-modeling-mcp](https://github.com/microsoft/powerbi-modeling-mcp) together with this skill for end-to-end report authoring:
+
+- **Semantic model authoring (`powerbi-modeling-mcp`)**: Connects AI agents to Power BI Desktop, Fabric, or PBIP/TMDL models to create and validate tables, columns, DAX measures, and relationships. It explicitly cannot modify report pages or visual canvas elements.
+- **Report visual guidance (`powerbi-desktop-handbook`)**: Validates visual types, exact-build field-well roles, Format pane properties, and builds offline construction guides.
+- **Contract extraction**: Run `node scripts/handbook.mjs model-contract --manifest dashboard.json --json` to extract required tables, columns, and measures from the visual manifest, allowing agents using `powerbi-modeling-mcp` to ensure model objects exist before manual report assembly.
 
 ## Manifest field assignments
 

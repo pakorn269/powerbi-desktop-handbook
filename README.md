@@ -4,6 +4,8 @@ Build version-aware, standalone report-construction handbooks that feel like Mic
 
 The project combines a pinned Power BI visual schema, curated release evidence, manifest validation, and an offline HTML generator. Its first release profile targets **Microsoft Power BI Desktop optimized for Power BI Report Server — January 2026**, build `2.150.5353.0`.
 
+![Power BI Desktop Handbook Interface](docs/images/handbook-overview.png)
+
 ## What it provides
 
 - A release-aware catalog of Power BI visuals, aliases, availability states, and format objects.
@@ -46,6 +48,7 @@ plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handboo
 | `lookup --visual NAME` | Resolve a gallery label, alias, or internal visual identifier. |
 | `validate --manifest FILE` | Validate a handbook manifest without generating output. |
 | `build --manifest FILE --output FILE` | Validate and generate a standalone HTML handbook. |
+| `model-contract --manifest FILE` | Extract required semantic model tables, columns, and measures. |
 
 Commands accept `--json`. Release-aware commands accept `--release VERSION`; the default is `2.150.5353.0`.
 
@@ -118,9 +121,13 @@ The shared shell mirrors the structure of the target Desktop release without dep
 
 Manifest brand colors apply to report content; the surrounding application chrome remains neutral and consistent across generated handbooks.
 
+![Build visual gallery and field-well inspector](docs/images/handbook-visual-plan.png)
+
 ### Visual gallery palette
 
 All 37 gallery entries have an explicit primary and accent color. Core chart families use consistent blue, violet, orange, magenta, green, amber, or slate pairs; R, Python, AI, scorecard, and paginated-report visuals retain distinct accents. The palette is applied with CSS variables in the shared shell, so the existing SVG geometry and the standalone offline format remain unchanged.
+
+![Release visual catalog and format object inspector](docs/images/handbook-visual-catalog.png)
 
 Hover, selected, focused, and used states preserve each icon's assigned colors. Regression coverage verifies the complete gallery mapping, rejects missing or duplicate assignments, and checks primary, accent, outline, hover, and selected behavior.
 
@@ -153,6 +160,57 @@ Important naming distinctions:
 
 Power BI Desktop optimized for Report Server primarily saves PBIX. This project does not claim PBIP/PBIR round-trip authoring support for that edition, and generated handbooks do not modify PBIX report canvases.
 
+## Compatibility with powerbi-modeling-mcp
+
+This project is designed to work hand-in-hand with Microsoft's official [Power BI Modeling MCP Server](https://github.com/microsoft/powerbi-modeling-mcp) ([`@microsoft/powerbi-modeling-mcp`](https://www.npmjs.com/package/@microsoft/powerbi-modeling-mcp)).
+
+![Power BI Desktop Authoring & Handbook Architecture](docs/images/architecture-diagram.svg)
+
+### Division of responsibility
+
+| Responsibility | Handled by `powerbi-modeling-mcp` | Handled by `powerbi-desktop-handbook` |
+| --- | --- | --- |
+| Semantic model authoring | Yes (tables, columns, measures, DAX, relationships, TMDL) | No (documents field assignments) |
+| DAX query testing & validation | Yes (via local or hosted MCP tools) | No |
+| Report visual canvas modifications | No (cannot edit report pages or diagram layouts) | Yes (guided manual construction & exact field wells) |
+| Exact-build visual catalog & roles | No | Yes (pinned build 2.150.5353.0 gallery & Build roles) |
+| Format pane property guidance | No | Yes (theme-schema-backed paths & UI assertions) |
+| Standalone offline construction handbook | No | Yes (single-file HTML with interactive checklists) |
+
+### Recommended agent workflow
+
+1. **Model Authoring**: An AI agent connects to Power BI Desktop, Fabric, or a PBIP/TMDL folder using `powerbi-modeling-mcp` to create tables, columns, DAX measures, and relationships.
+2. **Contract Extraction**: Run `model-contract` to extract the semantic model requirements declared by a report manifest:
+   ```powershell
+   node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs model-contract --manifest examples/sample-dashboard.json --json
+   ```
+   This returns the distinct required tables, columns, and measures, plus the visuals and field roles that reference them.
+3. **Model Alignment**: The AI agent verifies against the live semantic model via `powerbi-modeling-mcp` (e.g., using `GetSemanticModelSchema`) to ensure all referenced objects exist before reporting is constructed.
+4. **Visual Guide Generation**: Validate the manifest and generate the standalone offline handbook:
+   ```powershell
+   node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs build --manifest examples/sample-dashboard.json --output examples/sample-dashboard-guide.html --json
+   ```
+
+### MCP client configuration
+
+To enable the Power BI Modeling MCP Server in your MCP client (e.g. VS Code Copilot, Claude Desktop, Antigravity, or Cursor), add the following configuration:
+
+```json
+{
+  "mcpServers": {
+    "powerbi-modeling": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@microsoft/powerbi-modeling-mcp@latest",
+        "--start"
+      ]
+    }
+  }
+}
+```
+
 ## Repository layout
 
 ```text
@@ -181,7 +239,7 @@ npm run audit:public
 
 Rebuild affected handbooks and open them through `file://`. Check search, filters, navigation, checklist persistence, print output, and both desktop and mobile layouts.
 
-The publication audit scans repository filenames and text content, including generated HTML, for organization identifiers, private project terms, local usernames and workspace paths, credential assignments, and private-key material. Private or customer-specific inputs should remain outside the repository or in one of the ignored local-only directories.
+The publication audit scans repository filenames and text content, including generated HTML, for credential assignments, private keys, local workspace paths, and unapproved usernames. To enforce custom organization- or customer-specific blocklists without committing sensitive names to public git history, place them in an ignored `local/audit-blocklist.json` or `private/audit-blocklist.json` file, or set the `PBI_AUDIT_BLOCKLIST` environment variable.
 
 ## Evidence sources
 

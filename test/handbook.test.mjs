@@ -7,8 +7,10 @@ import {
   buildCatalog,
   buildHandbook,
   detectRelease,
+  extractModelRequirements,
   loadBuildRoles,
   normalizeFieldAssignments,
+  parseFieldReference,
   resolveVisual,
   serializeForHtmlData,
   validateManifest,
@@ -333,4 +335,60 @@ test('desktop detection returns a transparent compatibility state', () => {
   const result = detectRelease('2.150.5353.0');
   assert.ok(['exact', 'schema-family', 'mismatch', 'not-installed', 'unreadable'].includes(result.compatibility));
   assert.equal(result.target, '2.150.5353.0');
+});
+
+test('semantic model contract extraction aligns with Power BI modeling notation', () => {
+  const reqs = extractModelRequirements(sample);
+  assert.equal(reqs.manifestId, 'operations-pulse');
+  assert.deepEqual(reqs.tables, ['Incident', 'Measures', 'Region', 'Team']);
+  assert.deepEqual(reqs.columns, ['Incident[Severity]', 'Region[Region]', 'Team[Name]']);
+  assert.deepEqual(reqs.measures, ['Measures[Open incidents]']);
+  assert.equal(reqs.fields.length, 4);
+
+  const openIncidents = reqs.fields.find(f => f.field === 'Measures[Open incidents]');
+  assert.equal(openIncidents.table, 'Measures');
+  assert.equal(openIncidents.name, 'Open incidents');
+  assert.equal(openIncidents.kind, 'measure');
+  assert.equal(openIncidents.visuals.length, 3);
+  assert.deepEqual(openIncidents.visuals.map(v => v.visualId), ['open-incidents', 'incidents-by-team', 'severity-matrix']);
+
+  // Unscoped measure notation: [Total Revenue]
+  const unscoped = parseFieldReference('[Total Revenue]');
+  assert.equal(unscoped.table, null);
+  assert.equal(unscoped.name, 'Total Revenue');
+  assert.equal(unscoped.isMeasure, true);
+
+  // Quoted table notation: 'Customer Orders'[Order Date]
+  const quoted = parseFieldReference("'Customer Orders'[Order Date]");
+  assert.equal(quoted.table, 'Customer Orders');
+  assert.equal(quoted.name, 'Order Date');
+  assert.equal(quoted.isMeasure, false);
+
+  // Hierarchy notation: 'Date'[Calendar].[Year]
+  const hierarchy = parseFieldReference("'Date'[Calendar].[Year]");
+  assert.equal(hierarchy.table, 'Date');
+  assert.equal(hierarchy.name, 'Calendar.Year');
+  assert.equal(hierarchy.isHierarchy, true);
+
+  // Synthetic manifest mixing DAX unscoped measures and quoted tables
+  const syntheticManifest = {
+    id: 'dax-model-test',
+    release: '2.150.5353.0',
+    visuals: [
+      {
+        id: 'sales-card',
+        type: 'cardVisual',
+        fields: ['[Total Revenue]']
+      },
+      {
+        id: 'trend-chart',
+        type: 'clusteredBarChart',
+        fields: ["Y-axis: 'Order Details'[Product Category]", 'X-axis: [Total Revenue]']
+      }
+    ]
+  };
+  const syntheticReqs = extractModelRequirements(syntheticManifest);
+  assert.deepEqual(syntheticReqs.tables, ['Order Details']);
+  assert.deepEqual(syntheticReqs.columns, ["'Order Details'[Product Category]"]);
+  assert.deepEqual(syntheticReqs.measures, ['[Total Revenue]']);
 });
