@@ -42,3 +42,6 @@ jobs:
 
       - name: Verify handbook HTML build
         run: node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs build --manifest examples/sample-dashboard.json --output examples/sample-dashboard-guide.html --json
+
+      - name: Verify committed example matches a fresh build
+        run: npm run rebuild-check

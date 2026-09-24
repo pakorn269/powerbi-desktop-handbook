@@ -1,0 +1,138 @@
+{
+  "$schema": "../schemas/manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "executive-sales-dashboard",
+  "title": "Executive Sales & Performance Dashboard",
+  "organization": "Contoso Enterprise Solutions",
+  "subtitle": "High-level executive overview tracking enterprise revenue, margin trends, category distribution, and regional targets.",
+  "release": "2.150.5353.0",
+  "page": { "width": 1280, "height": 720, "background": "#F8F9FA" },
+  "brand": { "ink": "#1A202C", "accent": "#2B6CB0", "secondary": "#319795" },
+  "snapshot": [
+    { "label": "Total Revenue", "value": "$4.82M" },
+    { "label": "Gross Margin", "value": "42.8%" },
+    { "label": "Active Customers", "value": "1,420" },
+    { "label": "Avg Order Value", "value": "$3,394" }
+  ],
+  "visuals": [
+    {
+      "id": "kpi-revenue",
+      "title": "Total Revenue",
+      "type": "cardVisual",
+      "position": { "x": 40, "y": 80, "width": 280, "height": 110 },
+      "fields": ["Measures[Total Revenue]"],
+      "settings": [
+        { "path": "Format visual > Callout values", "label": "Font size", "value": "32 pt" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#FFFFFF" }
+      ]
+    },
+    {
+      "id": "kpi-margin",
+      "title": "Gross Margin",
+      "type": "cardVisual",
+      "position": { "x": 340, "y": 80, "width": 280, "height": 110 },
+      "fields": ["Measures[Gross Margin Pct]"],
+      "settings": [
+        { "path": "Format visual > Callout values", "label": "Font size", "value": "32 pt" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#FFFFFF" }
+      ]
+    },
+    {
+      "id": "kpi-customers",
+      "title": "Active Customers",
+      "type": "cardVisual",
+      "position": { "x": 640, "y": 80, "width": 280, "height": 110 },
+      "fields": ["Measures[Active Customer Count]"],
+      "settings": [
+        { "path": "Format visual > Callout values", "label": "Font size", "value": "32 pt" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#FFFFFF" }
+      ]
+    },
+    {
+      "id": "kpi-aov",
+      "title": "Avg Order Value",
+      "type": "cardVisual",
+      "position": { "x": 940, "y": 80, "width": 300, "height": 110 },
+      "fields": ["Measures[Average Order Value]"],
+      "settings": [
+        { "path": "Format visual > Callout values", "label": "Font size", "value": "32 pt" },
+        { "path": "Format visual > General > Effects > Background", "label": "Background", "value": "#FFFFFF" }
+      ]
+    },
+    {
+      "id": "revenue-trend",
+      "title": "Monthly Revenue & Margin Trend",
+      "type": "lineClusteredColumnComboChart",
+      "position": { "x": 40, "y": 210, "width": 780, "height": 470 },
+      "fields": [
+        "X-axis: Calendar[Month Year]",
+        "Column y-axis: Measures[Total Revenue]",
+        "Line y-axis: Measures[Gross Margin Pct]"
+      ],
+      "settings": [
+        { "path": "Format visual > Columns", "label": "Color", "value": "#2B6CB0" },
+        { "path": "Format visual > Lines", "label": "Color", "value": "#319795" }
+      ]
+    },
+    {
+      "id": "category-donut",
+      "title": "Revenue by Category",
+      "type": "donutChart",
+      "position": { "x": 840, "y": 210, "width": 400, "height": 225 },
+      "fields": [
+        "Legend: Products[Category]",
+        "Values: Measures[Total Revenue]"
+      ],
+      "settings": [
+        { "path": "Format visual > Legend", "label": "Position", "value": "Right center" },
+        { "path": "Format visual > Slices", "label": "Data colors", "value": "Theme default" }
+      ]
+    },
+    {
+      "id": "regional-matrix",
+      "title": "Regional Performance",
+      "type": "Matrix",
+      "position": { "x": 840, "y": 450, "width": 400, "height": 230 },
+      "fields": [
+        "Rows: Geography[Region]",
+        "Values: Measures[Total Revenue]"
+      ],
+      "settings": [
+        { "path": "Format visual > Grid", "label": "Horizontal grid", "value": "On" },
+        { "path": "Format visual > Values", "label": "Font size", "value": "10 pt" }
+      ],
+      "notes": "Matrix maps to schema pivotTable in build 2.150."
+    }
+  ],
+  "sections": [
+    {
+      "title": "Prepare",
+      "items": [
+        "Open Power BI Desktop (Power BI Report Server January 2026).",
+        "Verify semantic model contains Calendar, Products, Geography tables and core financial measures."
+      ]
+    },
+    {
+      "title": "Build",
+      "items": [
+        "Set canvas to 1280 × 720 with #F8F9FA background.",
+        "Add the 4 top KPI cards horizontally across (Y: 80).",
+        "Add the Monthly Revenue combo chart spanning the left side (width: 780).",
+        "Place the Donut chart and Regional Matrix on the right column (X: 840)."
+      ]
+    },
+    {
+      "title": "Verify",
+      "items": [
+        "Inspect canvas alignment and spacing consistency.",
+        "Check cross-filtering between donut slices and regional matrix.",
+        "Publish PBIX to test Report Server portal."
+      ]
+    }
+  ],
+  "acceptance": [
+    "All 7 visuals align with the exact layout coordinates.",
+    "Brand theme colors (#2B6CB0, #319795) applied to combo chart and cards.",
+    "Report loads without performance warnings on Power BI Report Server."
+  ]
+}

@@ -1,4 +1,5 @@
 {
+  "$schema": "../schemas/manifest.schema.json",
   "schemaVersion": 1,
   "id": "operations-pulse",
   "title": "Operations Pulse",

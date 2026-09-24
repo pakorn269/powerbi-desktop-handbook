@@ -16,6 +16,7 @@ The project combines a pinned Power BI visual schema, curated release evidence, 
 - Exact-build detection for the locally installed Report Server Desktop executable.
 - Validation for report page dimensions, visual types, placement bounds, and format-setting assertions.
 - A shared Power BI Desktop-style web shell with a ribbon, section rail, report workspace, and inspector panes.
+- An interactive 2D canvas layout preview with realistic mockups, blueprint wireframes, and live layout adjustment.
 - A 37-item visual gallery with a curated, two-tone SVG palette organized by visual family.
 - Exact-build field-role evidence for 30 gallery visuals, with seven modeled entries explicitly pending when the classic gallery did not expose them directly.
 - Backward-compatible legacy and structured field assignments normalized against exact-release Build-role evidence.
@@ -118,12 +119,27 @@ The shared shell mirrors the structure of the target Desktop release without dep
 - The title bar provides global search and release context.
 - Ribbon tabs expose real navigation, filtering, printing, and checklist actions.
 - The left rail tracks the active handbook section.
-- The central workspace renders overview, workflow, visual plan, catalog, and acceptance pages.
+- The central workspace renders overview, canvas preview, workflow, visual plan, catalog, and acceptance pages.
 - Filters, Visualizations, and Data panes expose evidence filters, a release-aware visual gallery with manifest field wells, page-format guidance, placement navigation, and build metadata.
 - Narrow screens use a drawer-based inspector and bottom navigation.
 - Print mode removes application chrome and produces a clean build document.
 
 Manifest brand colors apply to report content; the surrounding application chrome remains neutral and consistent across generated handbooks.
+
+![Power BI Desktop Handbook Interactive Walkthrough](docs/handbook_overview_test_1790222201127.webp)
+
+### Interactive canvas layout preview
+
+Users can view and evaluate dashboard templates or samples before actually building them in Power BI Desktop. Seeing the layout beforehand ensures the design meets user requirements, avoiding wasted time and build rework:
+
+- **Realistic Mockup Mode**: Renders KPI cards, bar charts, line graphs, donut charts, and matrix tables with formatted mock metrics and brand styling.
+- **Blueprint Wireframe Mode**: Shows technical bounding boxes, exact `[X, Y, W, H]` coordinates, and visual type badges.
+- **Live Layout Adjuster**: Select any visual on the canvas, adjust its position or size with immediate visual feedback, and copy the updated layout JSON to your clipboard.
+- **Alignment Grid**: Toggleable 40px grid overlay for precise margin and gutter alignment.
+
+![Interactive Canvas Layout Preview — Executive Sales Dashboard](docs/executive_sales_preview_7_visuals_1790223984450.png)
+
+### Visual gallery and field-well inspector
 
 ![Build visual gallery and field-well inspector](docs/images/handbook-visual-plan.png)
 
@@ -225,8 +241,11 @@ plugins/powerbi-desktop-handbook/                       Installable plugin
     assets/handbook-shell.html                          Shared offline interface
     references/                                         Release, build-role, visual, guide, and schema evidence
     scripts/handbook.mjs                                CLI and generator
-test/                                                   Node test suite
+schemas/manifest.schema.json                            JSON Schema for manifest IDE autocomplete
+test/                                                   Node test suite and CI scripts
 AGENTS.md                                               Contributor and agent instructions
+CHANGELOG.md                                            Release history
+CONTRIBUTING.md                                         Contribution guide
 ```
 
 Keep private customer and operational manifests outside this public-ready repository.
@@ -239,9 +258,11 @@ Before committing generator, template, catalog, or manifest changes:
 npm test
 npm run validate
 npm run audit:public
+npm run build
+npm run rebuild-check
 ```
 
-Rebuild affected handbooks and open them through `file://`. Check search, filters, navigation, checklist persistence, print output, and both desktop and mobile layouts.
+The `rebuild-check` script verifies the committed example HTML matches a fresh build, preventing generator/template drift. Open the generated handbook through `file://` and check search, filters, navigation, checklist persistence, print output, and both desktop and mobile layouts.
 
 The publication audit scans repository filenames and text content, including generated HTML, for credential assignments, private keys, local workspace paths, and unapproved usernames. To enforce custom organization- or customer-specific blocklists without committing sensitive names to public git history, place them in an ignored `local/audit-blocklist.json` or `private/audit-blocklist.json` file, or set the `PBI_AUDIT_BLOCKLIST` environment variable.
 

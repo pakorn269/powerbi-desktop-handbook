@@ -308,6 +308,13 @@ test('build emits a standalone Power BI Desktop-style handbook', () => {
   assert.match(html, /initFilterControls\('format-filter-cards-reset'/);
   assert.match(html, /id="vg-stacked-bar"/);
   assert.match(html, /id="global-search"/);
+  assert.match(html, /id="preview"/);
+  assert.match(html, /id="preview-canvas"/);
+  assert.match(html, /id="preview-canvas-visuals"/);
+  assert.match(html, /id="preview-canvas-grid"/);
+  assert.match(html, /id="layout-adjuster"/);
+  assert.match(html, /id="btn-copy-manifest"/);
+  assert.match(html, /renderPreview/);
   assert.match(html, /id="status-filter"/);
   assert.match(html, /class="mobile-nav"/);
   assert.match(html, /pbi-handbook:/);

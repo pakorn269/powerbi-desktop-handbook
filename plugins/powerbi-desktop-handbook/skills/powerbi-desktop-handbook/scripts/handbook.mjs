@@ -14,6 +14,11 @@ const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const clean = value => String(value ?? '').trim().toLowerCase().replace(/[\s_-]+/g, '');
 const refName = ref => ref?.startsWith('#/definitions/') ? decodeURIComponent(ref.slice(14)) : null;
 
+/**
+ * Resolve filesystem paths for a given release profile.
+ * @param {string} version - Desktop build number (e.g., '2.150.5353.0').
+ * @returns {{ release: object, releaseFile: string, schemaFile: string, visualFile: string, guideFile: string, buildFile: string }}
+ */
 export function pathsForRelease(version = '2.150.5353.0') {
   const releaseFile = path.join(skillRoot, 'references', 'releases', `${version}.json`);
   if (!fs.existsSync(releaseFile)) throw new Error(`Unknown release profile: ${version}`);
@@ -28,6 +33,11 @@ export function pathsForRelease(version = '2.150.5353.0') {
   };
 }
 
+/**
+ * Load the curated exact-build field-role evidence for a release.
+ * @param {string} version - Desktop build number.
+ * @returns {{ release: string, capture: object, visuals: Array<object> }}
+ */
 export function loadBuildRoles(version = '2.150.5353.0') {
   if (buildRoleCache.has(version)) return buildRoleCache.get(version);
   const { buildFile } = pathsForRelease(version);
@@ -39,6 +49,11 @@ export function loadBuildRoles(version = '2.150.5353.0') {
   return reference;
 }
 
+/**
+ * Verify the pinned theme schema's SHA-256 checksum.
+ * @param {string} version - Desktop build number.
+ * @returns {{ ok: boolean, expected: string, actual: string, file: string }}
+ */
 export function verifySchema(version = '2.150.5353.0') {
   const p = pathsForRelease(version);
   const bytes = fs.readFileSync(p.schemaFile);
@@ -94,6 +109,11 @@ function formattingFromDefinition(definition, definitions) {
   return cards.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * Build the release-aware visual catalog from the pinned schema and curated overrides.
+ * @param {string} version - Desktop build number.
+ * @returns {{ release: object, schemaCheck: object, statuses: object, count: number, gallery: Array<object>, visuals: Array<object> }}
+ */
 export function buildCatalog(version = '2.150.5353.0') {
   if (catalogCache.has(version)) return catalogCache.get(version);
   const p = pathsForRelease(version);
@@ -132,6 +152,12 @@ export function buildCatalog(version = '2.150.5353.0') {
   return catalog;
 }
 
+/**
+ * Resolve a visual by ID, label, or alias from a catalog.
+ * @param {object} catalog - Catalog returned by buildCatalog().
+ * @param {string} query - Gallery label, alias, or internal identifier.
+ * @returns {object|null} Resolved visual entry, or null if not found.
+ */
 export function resolveVisual(catalog, query) {
   const q = clean(query);
   return catalog.visuals.find(v => clean(v.id) === q)
@@ -139,6 +165,11 @@ export function resolveVisual(catalog, query) {
     ?? null;
 }
 
+/**
+ * Detect the locally installed Power BI Desktop executable and compare with a target release.
+ * @param {string} version - Target build number.
+ * @returns {{ target: string, executable: string, installed: string|null, compatibility: string, exact: boolean }}
+ */
 export function detectRelease(version = '2.150.5353.0') {
   const { release } = pathsForRelease(version);
   const executable = release.defaultExecutable;
@@ -155,6 +186,13 @@ export function detectRelease(version = '2.150.5353.0') {
   return { target: version, executable, installed, compatibility: exact ? 'exact' : sameFamily ? 'schema-family' : installed ? 'mismatch' : 'unreadable', exact };
 }
 
+/**
+ * Normalize legacy strings and structured field assignments against a build-role reference.
+ * @param {Array<string|object>} fields - Raw field declarations from a manifest visual.
+ * @param {object|null} buildRole - Build-role entry for this visual, or null.
+ * @param {string} source - Source path for error/warning messages.
+ * @returns {{ assignments: Array<{role: string|null, field: string, kind: string, aggregation: string|null}>, errors: string[], warnings: string[] }}
+ */
 export function normalizeFieldAssignments(fields, buildRole = null, source = 'fields') {
   const assignments = [], errors = [], warnings = [];
   if (fields === undefined) fields = [];
@@ -240,6 +278,12 @@ export function normalizeFieldAssignments(fields, buildRole = null, source = 'fi
   return { assignments, errors, warnings };
 }
 
+/**
+ * Validate a handbook manifest against the target release catalog and build-role evidence.
+ * @param {object} manifest - Parsed manifest JSON.
+ * @param {string} source - File path or label for error messages.
+ * @returns {{ ok: boolean, source: string, errors: string[], warnings: string[] }}
+ */
 export function validateManifest(manifest, source = '<memory>') {
   const errors = [], warnings = [];
   const need = (condition, message) => { if (!condition) errors.push(message); };
@@ -306,11 +350,22 @@ function enrichedData(manifest) {
   };
 }
 
+/**
+ * Serialize a value to JSON with HTML-sensitive characters escaped for safe embedding in a script tag.
+ * @param {*} value - Value to serialize.
+ * @returns {string} JSON string with <, >, &, U+2028, and U+2029 escaped.
+ */
 export function serializeForHtmlData(value) {
   const replacements = { '<': '\\u003c', '>': '\\u003e', '&': '\\u0026', '\u2028': '\\u2028', '\u2029': '\\u2029' };
   return JSON.stringify(value).replace(/[<>&\u2028\u2029]/g, character => replacements[character]);
 }
 
+/**
+ * Validate a manifest and generate a standalone HTML handbook.
+ * @param {string} manifestFile - Path to the manifest JSON file.
+ * @param {string} outputFile - Destination path for the generated HTML.
+ * @returns {{ ok: boolean, output: string, warnings: string[], visuals: number }}
+ */
 export function buildHandbook(manifestFile, outputFile) {
   const source = path.resolve(manifestFile);
   const manifest = readJson(source);
@@ -324,6 +379,12 @@ export function buildHandbook(manifestFile, outputFile) {
   return { ok: true, output: destination, warnings: validation.warnings, visuals: manifest.visuals.length };
 }
 
+/**
+ * Parse a DAX field reference into its components.
+ * Supports Table[Column], 'Table Name'[Column], [Measure], and 'Table'[Hierarchy].[Level] notation.
+ * @param {string} rawField - Raw field reference string.
+ * @returns {{ table: string|null, name: string, expression: string, isMeasure: boolean, isHierarchy?: boolean }|null}
+ */
 export function parseFieldReference(rawField) {
   if (typeof rawField !== 'string') return null;
   const trimmed = rawField.trim();
@@ -377,6 +438,13 @@ export function parseFieldReference(rawField) {
   };
 }
 
+/**
+ * Extract semantic model requirements (tables, columns, measures) from a manifest.
+ * Used for integration with powerbi-modeling-mcp.
+ * @param {object} manifest - Parsed manifest JSON.
+ * @param {string} source - File path or label for error messages.
+ * @returns {{ manifestId: string|null, manifestTitle: string|null, release: string|null, tables: string[], columns: string[], measures: string[], fields: Array<object> }}
+ */
 export function extractModelRequirements(manifest, source = '<memory>') {
   if (!manifest || typeof manifest !== 'object') throw new Error('Manifest must be a JSON object.');
   const catalog = buildCatalog(manifest.release ?? '2.150.5353.0');

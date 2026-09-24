@@ -1,0 +1,266 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/pakorn269/powerbi-desktop-handbook/raw/main/schemas/manifest.schema.json",
+  "title": "Power BI Desktop Handbook Manifest",
+  "description": "Defines a report-construction handbook for a specific Power BI Desktop release. The manifest drives validation, HTML generation, and semantic model contract extraction.",
+  "type": "object",
+  "required": ["title", "release", "page", "visuals"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional JSON Schema reference for IDE autocomplete."
+    },
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1,
+      "description": "Manifest schema version. Currently always 1."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "A unique, URL-safe identifier for this handbook (e.g., 'operations-pulse')."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display title for the handbook (e.g., 'Operations Pulse')."
+    },
+    "organization": {
+      "type": "string",
+      "description": "Organization name displayed in the handbook header."
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "A brief description displayed below the title."
+    },
+    "release": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$",
+      "description": "Target Power BI Desktop build number (e.g., '2.150.5353.0')."
+    },
+    "page": {
+      "type": "object",
+      "required": ["width", "height"],
+      "description": "Report page dimensions and optional background color.",
+      "properties": {
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Page width in pixels."
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Page height in pixels."
+        },
+        "background": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Hex color for the page background."
+        }
+      },
+      "additionalProperties": false
+    },
+    "brand": {
+      "type": "object",
+      "description": "Brand colors applied to report content inside the handbook.",
+      "properties": {
+        "ink": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Primary text color."
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Accent color for the report header and brand elements."
+        },
+        "secondary": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Secondary color for metadata and decorative elements."
+        }
+      },
+      "additionalProperties": false
+    },
+    "snapshot": {
+      "type": "array",
+      "description": "Headline metrics displayed on the overview page.",
+      "items": {
+        "type": "object",
+        "required": ["label", "value"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Metric label (e.g., 'Open incidents')."
+          },
+          "value": {
+            "type": "string",
+            "description": "Metric value (e.g., '37')."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "visuals": {
+      "type": "array",
+      "description": "Ordered list of visuals to place on the report page.",
+      "items": {
+        "$ref": "#/definitions/Visual"
+      }
+    },
+    "sections": {
+      "type": "array",
+      "description": "Ordered build-workflow steps displayed as checklists.",
+      "items": {
+        "type": "object",
+        "required": ["title", "items"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Section heading (e.g., 'Prepare', 'Build', 'Verify')."
+          },
+          "items": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Checklist items within this section."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "acceptance": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Final acceptance criteria displayed as a checklist."
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "Visual": {
+      "type": "object",
+      "required": ["id", "type", "position"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique visual identifier within this manifest (e.g., 'open-incidents')."
+        },
+        "title": {
+          "type": "string",
+          "description": "Visual title displayed in the handbook."
+        },
+        "type": {
+          "type": "string",
+          "description": "Visual type — a gallery label (e.g., 'Matrix'), alias (e.g., 'current card'), or internal schema identifier (e.g., 'pivotTable')."
+        },
+        "position": {
+          "$ref": "#/definitions/Position"
+        },
+        "fields": {
+          "type": "array",
+          "description": "Field assignments. Accepts legacy strings (e.g., 'Y-axis: Team[Name]') and structured objects.",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Legacy field string. Optionally prefixed with a role label and colon."
+              },
+              {
+                "$ref": "#/definitions/StructuredField"
+              }
+            ]
+          }
+        },
+        "settings": {
+          "type": "array",
+          "description": "Format-pane settings to apply to this visual.",
+          "items": {
+            "$ref": "#/definitions/Setting"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-text notes displayed below the visual card."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Position": {
+      "type": "object",
+      "required": ["x", "y", "width", "height"],
+      "description": "Visual placement within the report page, in pixels.",
+      "properties": {
+        "x": { "type": "number", "minimum": 0 },
+        "y": { "type": "number", "minimum": 0 },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "StructuredField": {
+      "type": "object",
+      "required": ["role", "field"],
+      "description": "A structured field assignment with explicit role, kind, and aggregation metadata.",
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Build-role ID (e.g., 'yAxis') or displayed label (e.g., 'Y-axis'). Matched case- and punctuation-insensitively."
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1,
+          "description": "DAX field reference (e.g., 'Team[Name]', 'Measures[Revenue]', '[Total Revenue]')."
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["column", "measure", "hierarchy", "unknown"],
+          "default": "unknown",
+          "description": "Field kind. Defaults to 'unknown' if omitted."
+        },
+        "aggregation": {
+          "type": ["string", "null"],
+          "default": null,
+          "description": "Aggregation function (e.g., 'Sum', 'Average'), or null for default/none."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Setting": {
+      "type": "object",
+      "required": ["path", "label", "value"],
+      "description": "A format-pane instruction for this visual.",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Format pane navigation path (e.g., 'Format visual > Bars')."
+        },
+        "label": {
+          "type": "string",
+          "description": "Setting label within the format card (e.g., 'Color')."
+        },
+        "value": {
+          "description": "Setting value — typically a string, number, or boolean.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" }
+          ]
+        },
+        "schemaObject": {
+          "type": "string",
+          "description": "Schema object name for validation (e.g., 'bars'). Must be paired with schemaProperty."
+        },
+        "schemaProperty": {
+          "type": "string",
+          "description": "Schema property name for validation (e.g., 'barColor'). Must be paired with schemaObject."
+        }
+      },
+      "additionalProperties": false,
+      "dependencies": {
+        "schemaObject": ["schemaProperty"],
+        "schemaProperty": ["schemaObject"]
+      }
+    }
+  }
+}

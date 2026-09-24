@@ -12,6 +12,8 @@ This repository provides a version-aware Power BI Desktop visual catalog and a g
 - A handbook manifest is the source of truth for report-specific content. Do not hand-edit a generated guide when the change belongs in its manifest or the shared template.
 - `visuals[].fields` may mix legacy strings and structured `{ role, field, kind, aggregation }` assignments. Keep the raw manifest backward compatible; normalized assignments belong in generated `visuals[].fieldAssignments`, and the release contract belongs in top-level `buildRoles`.
 - `examples/sample-dashboard-guide.html` is generated from `examples/sample-dashboard.json` and must be rebuilt after generator, template, or relevant reference changes.
+- `examples/executive-sales-dashboard-guide.html` is generated from `examples/executive-sales-dashboard.json` and serves as a rich multi-visual template reference.
+- `schemas/manifest.schema.json` is the formal JSON Schema for handbook manifests. Update it when the manifest contract changes.
 
 ## Required workflow
 
@@ -21,10 +23,11 @@ Use Node.js 20 or newer. The CLI has no runtime dependencies.
 npm test
 npm run validate
 npm run audit:public
-node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs detect --json
-node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs lookup --release 2.150.5353.0 --visual Matrix --json
-node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs model-contract --manifest examples/sample-dashboard.json --json
-node plugins/powerbi-desktop-handbook/skills/powerbi-desktop-handbook/scripts/handbook.mjs build --manifest examples/sample-dashboard.json --output examples/sample-dashboard-guide.html --json
+npm run build
+npm run rebuild-check
+npm run detect
+npm run handbook -- lookup --release 2.150.5353.0 --visual Matrix --json
+npm run model-contract
 ```
 
 When changing visual guidance:
@@ -35,7 +38,7 @@ When changing visual guidance:
 4. Validate the manifest and run the complete test suite.
 5. Run the public-release audit before staging or publishing files.
 6. Rebuild affected generated HTML files.
-7. Open the result through `file://` and verify the interface, search, filters, checklist persistence, responsive behavior, and print layout.
+7. Open the result through `file://` and verify the interface, search, filters, checklist persistence, canvas layout preview (Mockup and Blueprint modes, layout adjuster), responsive behavior, and print layout.
 
 ## Evidence guardrails
 
@@ -52,6 +55,7 @@ When changing visual guidance:
 ## Web-template constraints
 
 - Generated handbooks must remain single-file and usable offline. Do not add remote scripts, stylesheets, fonts, or image dependencies.
+- Canvas preview must render using responsive pure CSS aspect-ratio and percentage positioning with SVG visual mocks; do not use external canvas libraries or CDN assets.
 - Treat reference screenshots as design evidence, not runtime assets, unless a manifest explicitly embeds an approved image.
 - Preserve manifest brand colors inside the report content while keeping the shared application chrome neutral and Desktop-like.
 - Keep keyboard navigation, focus states, reduced-motion support, responsive layouts, and print output functional.
