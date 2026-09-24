@@ -151,7 +151,11 @@ Users can view and evaluate dashboard templates or samples before actually build
 - **Live Layout Adjuster**: Select any visual on the canvas, adjust its position or size with immediate visual feedback, and copy the updated layout JSON to your clipboard.
 - **Alignment Grid**: Toggleable 40px grid overlay for precise margin and gutter alignment.
 
+![Interactive Canvas Layout Preview — Sales Scorecard](docs/mockup_canvas_preview_1790236814064.png)
+*Executive Sales Scorecard with 9 visuals: chromeless title banner with status indicators, vertical list slicers, conditional bar formatting, dual CY vs. PY trend lines with KPI growth headers, and regional manager P&L matrix.*
+
 ![Interactive Canvas Layout Preview — Executive Sales Dashboard](docs/executive_sales_preview_7_visuals_1790223984450.png)
+*Executive Sales & Performance Dashboard with 7 multi-family visuals, metric cards, donut charts, and live layout adjuster controls.*
 
 ### Visual gallery and field-well inspector
 
