@@ -17,3 +17,4 @@ local/
 *.customer.html
 
 .agents/plugins/powerbi-desktop-handbook
+.jules/
