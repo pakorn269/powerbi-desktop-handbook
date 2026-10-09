@@ -75,12 +75,16 @@ function mergeNode(node, definitions, seen = new Set()) {
 }
 
 function mergeObjects(a, b) {
+  if (!b) return a;
   const out = { ...a };
-  for (const [key, value] of Object.entries(b ?? {})) {
+  for (const key in b) {
     if (key === 'allOf' || key === '$ref') continue;
-    out[key] = value && typeof value === 'object' && !Array.isArray(value)
-      ? mergeObjects(out[key] && typeof out[key] === 'object' ? out[key] : {}, value)
-      : value;
+    if (Object.hasOwn(b, key)) {
+      const value = b[key];
+      out[key] = value && typeof value === 'object' && !Array.isArray(value)
+        ? mergeObjects(out[key] && typeof out[key] === 'object' ? out[key] : {}, value)
+        : value;
+    }
   }
   return out;
 }
@@ -345,7 +349,8 @@ function enrichedData(manifest) {
     visuals: manifest.visuals.map(v => {
       const resolved = resolveVisual(catalog, v.type);
       const fieldAssignments = normalizeFieldAssignments(v.fields, buildRolesById.get(resolved?.id)).assignments;
-      return { ...v, fieldAssignments, catalog: resolved, guide: guide.entries[resolved?.id] ?? {} };
+      const minimalCatalog = resolved ? { id: resolved.id, label: resolved.label, status: resolved.status, liveUi: resolved.liveUi } : null;
+      return { ...v, fieldAssignments, catalog: minimalCatalog, guide: guide.entries[resolved?.id] ?? {} };
     })
   };
 }
