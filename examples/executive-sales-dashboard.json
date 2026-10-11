@@ -100,8 +100,7 @@
       "settings": [
         { "path": "Format visual > Grid", "label": "Horizontal grid", "value": "On" },
         { "path": "Format visual > Values", "label": "Font size", "value": "10 pt" }
-      ],
-      "notes": "Matrix maps to schema pivotTable in build 2.150."
+      ]
     }
   ],
   "sections": [

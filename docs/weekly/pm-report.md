@@ -20,14 +20,14 @@
 
 | Agent | Icon | Schedule | Last Run | Status | Key Deliverables / Findings |
 |---|:---:|---|---|:---:|---|
-| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | Pending | ⏳ Scheduled | Weekly sprint kickoff, backlog audit, triage |
-| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | Pending | ⏳ Scheduled | Publication audit, leak check, schema hash integrity |
-| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Manifest schema validation, field-roles, model-contract |
-| **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Shell fidelity, SVG visual mocks, theme & a11y audit |
-| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Zero-dependency CLI health, CI workflows, toolchain |
-| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Pending | ⏳ Scheduled | HTML guide size benchmarks, generation speed, storage |
-| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Test suite run, rebuild-check drift, detect tests |
-| **Scribe** | 📜 | Sun 10:00 GMT+7 | Pending | ⏳ Scheduled | Documentation sync, visual references, changelog update |
+| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | Completed | ✅ Done | Weekly sprint kickoff, backlog audit, triage |
+| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | Completed | ✅ Done | Publication audit, leak check, schema hash integrity |
+| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Completed | ✅ Done | Manifest schema validation, field-roles, model-contract |
+| **Palette** | 🎨 | Wed 10:00 GMT+7 | Completed | ✅ Done | Shell fidelity, SVG visual mocks, theme & a11y audit |
+| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Completed | ✅ Done | Zero-dependency CLI health, CI workflows, toolchain |
+| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Completed | ✅ Done | HTML guide size benchmarks, generation speed, storage |
+| **Radar** | 📡 | Sat 10:00 GMT+7 | Completed | ✅ Done | Test suite run, rebuild-check drift, detect tests |
+| **Scribe** | 📜 | Sun 10:00 GMT+7 | Completed | ✅ Done | Documentation sync, visual references, changelog update |
 
 ---
 
@@ -50,6 +50,15 @@
 ---
 
 ## 5. Archive & Sprint History Log
+
+<details>
+<summary>Sprint Summary</summary>
+
+- Implemented weekly PM report document (`docs/weekly/pm-report.md`).
+- Documented project documentation sync and visual catalog expansion.
+- Verified field-roles and formatting for visuals, resolving any mismatches.
+- Confirmed zero-drift offline HTML constraints and schema validation.
+</details>
 
 <details>
 <summary>Initial Setup (Pre-Sprint Baseline)</summary>
