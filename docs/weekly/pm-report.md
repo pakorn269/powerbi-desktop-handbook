@@ -20,20 +20,20 @@
 
 | Agent | Icon | Schedule | Last Run | Status | Key Deliverables / Findings |
 |---|:---:|---|---|:---:|---|
-| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | Completed | ✅ Done | Weekly sprint kickoff, backlog audit, triage |
-| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | Completed | ✅ Done | Publication audit, leak check, schema hash integrity |
-| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Completed | ✅ Done | Manifest schema validation, field-roles, model-contract |
-| **Palette** | 🎨 | Wed 10:00 GMT+7 | Completed | ✅ Done | Shell fidelity, SVG visual mocks, theme & a11y audit |
-| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Completed | ✅ Done | Zero-dependency CLI health, CI workflows, toolchain |
-| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Completed | ✅ Done | HTML guide size benchmarks, generation speed, storage |
-| **Radar** | 📡 | Sat 10:00 GMT+7 | Completed | ✅ Done | Test suite run, rebuild-check drift, detect tests |
-| **Scribe** | 📜 | Sun 10:00 GMT+7 | Completed | ✅ Done | Documentation sync, visual references, changelog update |
+| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | Pending | ⏳ Scheduled | Weekly sprint kickoff, backlog audit, triage |
+| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | 2026-10-12 | ✅ **PASS** | Publication audit passed, no leaks detected, schema checksum valid, 0 remote dependencies found |
+| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Manifest schema validation, field-roles, model-contract |
+| **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Shell fidelity, SVG visual mocks, theme & a11y audit |
+| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Zero-dependency CLI health, CI workflows, toolchain |
+| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Today | ✅ Complete | Build speed: ~1.8s. Max size: ~2.8MB (down from ~4.7MB). Replaced deep schema clone with `Object.hasOwn` merging. Removed heavy catalog duplication. Offline UI scales well under load. |
+| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Test suite run, rebuild-check drift, detect tests |
+| **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-12 | Documentation updated | README example list and changelog synchronized; pending visual/UI verification remains open. |
 
 ---
 
 ## 3. Active Blockers & Critical Findings
 
-- *None currently blocking. Ready for initial Jules scheduled agent run.*
+- ✅ **Sentinel run complete (2026-10-12)**: Public audit passed. No private leaks detected. Gitignore boundaries intact. Schema checksums valid against release profile. Zero remote dependencies found in HTML examples.
 
 ---
 
@@ -52,12 +52,12 @@
 ## 5. Archive & Sprint History Log
 
 <details>
-<summary>Sprint Summary</summary>
+<summary>Verified Maintenance Results — 2026-10-12</summary>
 
-- Implemented weekly PM report document (`docs/weekly/pm-report.md`).
-- Documented project documentation sync and visual catalog expansion.
-- Verified field-roles and formatting for visuals, resolving any mismatches.
-- Confirmed zero-drift offline HTML constraints and schema validation.
+- The combined changes from PRs #1, #3, and #5 passed all 12 local tests, manifest validation, publication auditing, model-contract extraction, and rebuild comparisons for all five guides.
+- GitHub CI passed on Node.js 20 and 22 on Ubuntu and Windows for the merged main commit `d7d336e6c508c8f6904a32a503686fd855445bb4`.
+- README now lists all five example manifests. Matrix remains the supported user-facing alias for `pivotTable`; legacy string fields and structured field objects are both supported.
+- These automated results do not establish completion of live Desktop UI inspection, browser interaction, accessibility, or theme-fidelity checks.
 </details>
 
 <details>

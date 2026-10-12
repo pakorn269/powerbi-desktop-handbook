@@ -13,8 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- Updated Agent Status Board in PM report.
-- Removed outdated Matrix/pivotTable notes from sample dashboards.
+- Updated the weekly PM report with verified maintenance results while preserving pending agent work.
+- Preserved the supported Matrix/pivotTable naming distinction and legacy field syntax in example manifests.
 
 ## [0.1.0] — 2026-09-24
 

@@ -45,7 +45,8 @@
       "settings": [
         { "path": "Format visual > Grid", "label": "Horizontal grid", "value": "On" },
         { "path": "Format visual > Row headers", "label": "Stepped layout", "value": "Off" }
-      ]
+      ],
+      "notes": "The gallery calls this Matrix; the 2.150 theme schema calls it pivotTable."
     }
   ],
   "sections": [
