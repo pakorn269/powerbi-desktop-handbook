@@ -9,7 +9,8 @@
 ## 1. Executive Summary & Sprint Goals
 
 ### Current Sprint Focus
-- [ ] **Visual Catalog Expansion**: Verify field-roles and formatting options for core visuals (Matrix, Decomposition Tree, Gauge, KPI).
+- [ ] **Example Coverage Expansion**: Add manifest examples for Decomposition Tree, Gauge, Waterfall, KPI, and Scatter using their existing exact-build field-role evidence. Inspect the target Desktop UI before making additional format-pane claims.
+- [ ] **Optional Structured-Field Examples**: Demonstrate `{ role, field, kind, aggregation }` assignments where useful. Legacy string fields and the user-facing `Matrix` alias for `pivotTable` remain supported; no migration is required.
 - [ ] **Schema & Contract Verification**: Ensure all manifests validate against `schemas/manifest.schema.json` and `model-contract` extracts clean TMDL/DAX contracts.
 - [ ] **Canvas Preview & Theme Fidelity**: Validate SVG visual mockups in Blueprint and Mockup modes against deuteranopia and custom theme palettes.
 - [ ] **Zero-Drift & Offline Hygiene**: Enforce 100% offline standalone HTML constraint (no external CDNs) and pass `audit:public` with zero rebuild drift.
@@ -20,13 +21,13 @@
 
 | Agent | Icon | Schedule | Last Run | Status | Key Deliverables / Findings |
 |---|:---:|---|---|:---:|---|
-| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | Pending | ⏳ Scheduled | Weekly sprint kickoff, backlog audit, triage |
+| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | 2026-10-12 | Backlog reviewed | Separated missing examples from verified field-role evidence and optional structured-field adoption. |
 | **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | 2026-10-12 | ✅ **PASS** | Publication audit passed, no leaks detected, schema checksum valid, 0 remote dependencies found |
-| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Manifest schema validation, field-roles, model-contract |
-| **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Shell fidelity, SVG visual mocks, theme & a11y audit |
-| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Zero-dependency CLI health, CI workflows, toolchain |
-| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Today | ✅ Complete | Build speed: ~1.8s. Max size: ~2.8MB (down from ~4.7MB). Replaced deep schema clone with `Object.hasOwn` merging. Removed heavy catalog duplication. Offline UI scales well under load. |
-| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Test suite run, rebuild-check drift, detect tests |
+| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Validate new example manifests and model-contract exports against the existing field-role reference. |
+| **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Check SVG visual mocks, browser interaction, theme contrast, and accessibility; inspect live UI for new format guidance. |
+| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI health and the supported CI toolchain. |
+| **Bolt** | ⚡ | Fri 10:00 GMT+7 | 2026-10-12 | Payload reduction verified | PR #1 reduced the largest guide from 4,907,784 to 2,879,258 bytes by removing duplicate per-placement catalog formatting; controlled timing and browser load checks remain pending. |
+| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Run tests and rebuild comparisons after new examples; preserve transparent Desktop detection results. |
 | **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-12 | Documentation updated | README example list and changelog synchronized; pending visual/UI verification remains open. |
 
 ---
@@ -34,6 +35,8 @@
 ## 3. Active Blockers & Critical Findings
 
 - ✅ **Sentinel run complete (2026-10-12)**: Public audit passed. No private leaks detected. Gitignore boundaries intact. Schema checksums valid against release profile. Zero remote dependencies found in HTML examples.
+- **Example backlog**: The five visuals listed below lack example placements. This is coverage work, not a blocker to the current generator workflow.
+- **Pending manual checks**: Browser interaction, accessibility, theme fidelity, and any new live Desktop format-pane evidence remain unverified by the automated maintenance checks.
 
 ---
 
@@ -41,11 +44,23 @@
 
 - **Pinned Build**: `2.150.5353.0` (January 2026 Report Server)
 - **Manifests Tracked**:
-  - `examples/sample-dashboard.json` (Core visuals: card, bar, slicer)
+  - `examples/sample-dashboard.json` (3 visuals: current Card, clustered bar, Matrix)
   - `examples/executive-sales-dashboard.json` (Multi-visual executive overview)
   - `examples/sales-scorecard.json` (9 visuals, conditional formatting, matrix)
   - `examples/university-of-melbourne.json` (Treemap, table, line, custom theme)
   - `examples/opportunity-analysis.json` (26 visuals, 4-quadrant layout, deuteranopia-accessible palette)
+
+The pinned `references/build/2.150.5353.0.json` marks the field roles for each visual below as verified. None is placed in the five current example manifests. Field-role verification does not establish additional format-pane settings, role capacity, requiredness, accepted kinds, or aggregation defaults.
+
+| Visual | Catalog ID | Exact-build field-role evidence | Example placement |
+|---|---|---|---|
+| Decomposition Tree | `decompositionTreeVisual` | Verified | Pending |
+| Gauge | `gauge` | Verified | Pending |
+| Waterfall | `waterfallChart` | Verified | Pending |
+| KPI | `kpi` | Verified | Pending |
+| Scatter | `scatterChart` | Verified | Pending |
+
+Legacy string fields and structured objects can coexist within a manifest. `Matrix` resolves to `pivotTable`; neither spelling indicates an unversioned or unsupported visual.
 
 ---
 
