@@ -67,6 +67,11 @@ test('catalog resolves gallery aliases without conflating legacy cards', () => {
   assert.equal(resolveVisual(catalog, 'legacy card').id, 'card');
   assert.equal(resolveVisual(catalog, 'multi row card').id, 'multiRowCard');
   assert.equal(resolveVisual(catalog, 'card').status, 'legacy-hidden');
+
+  assert.equal(resolveVisual(catalog, 'decompositionTreeVisual').id, 'decompositionTreeVisual');
+  assert.equal(resolveVisual(catalog, 'gauge').id, 'gauge');
+  assert.equal(resolveVisual(catalog, 'kpi').id, 'kpi');
+  assert.equal(resolveVisual(catalog, 'Matrix').id, 'pivotTable');
 });
 
 test('exact-build role evidence covers the complete modeled gallery', () => {
@@ -144,6 +149,22 @@ test('manifest validation catches missing visuals and page overflow', () => {
   assert.equal(result.ok, false);
   assert.ok(result.errors.some(error => error.includes('not in the release catalog')));
   assert.ok(result.errors.some(error => error.includes('page bounds')));
+
+  const missingVisuals = structuredClone(sample);
+  delete missingVisuals.visuals;
+  const missingResult = validateManifest(missingVisuals);
+  assert.equal(missingResult.ok, false);
+  assert.ok(missingResult.errors.some(error => error.includes('visuals must be an array')));
+
+  const emptyVisuals = structuredClone(sample);
+  emptyVisuals.visuals = [];
+  const emptyResult = validateManifest(emptyVisuals);
+  assert.equal(emptyResult.ok, true);
+
+  const singleVisual = structuredClone(sample);
+  singleVisual.visuals = [singleVisual.visuals[0]];
+  const singleResult = validateManifest(singleVisual);
+  assert.equal(singleResult.ok, true);
 });
 
 test('legacy and structured fields normalize to the additive assignment contract', () => {
@@ -180,7 +201,8 @@ test('structured field shape errors fail validation while semantic issues warn',
   malformed.visuals[0].fields = [
     { role: '', field: '' },
     { role: 'value', field: 'Measures[Open incidents]', kind: 'calculated' },
-    { role: 'value', field: 'Measures[Open incidents]', aggregation: 42 }
+    { role: 'value', field: 'Measures[Open incidents]', aggregation: 42 },
+    { role: 'value', field: 'Measures[Open incidents]', aggregation: { invalid: 'type' } }
   ];
   const invalid = validateManifest(malformed);
   assert.equal(invalid.ok, false);
