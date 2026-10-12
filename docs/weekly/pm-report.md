@@ -25,7 +25,7 @@
 | **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Manifest schema validation, field-roles, model-contract |
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Shell fidelity, SVG visual mocks, theme & a11y audit |
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Zero-dependency CLI health, CI workflows, toolchain |
-| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Pending | ⏳ Scheduled | HTML guide size benchmarks, generation speed, storage |
+| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Today | ✅ Complete | Build speed: ~1.8s. Max size: ~2.8MB (down from ~4.7MB). Replaced deep schema clone with `Object.hasOwn` merging. Removed heavy catalog duplication. Offline UI scales well under load. |
 | **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Test suite run, rebuild-check drift, detect tests |
 | **Scribe** | 📜 | Sun 10:00 GMT+7 | Pending | ⏳ Scheduled | Documentation sync, visual references, changelog update |
 
