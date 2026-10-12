@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Added
+
+- Added `docs/weekly/pm-report.md` for sprint tracking.
+- Added `examples/opportunity-analysis.json` to example manifest list in README.
+
+### Changed
+
+- Updated the weekly PM report with verified maintenance results while preserving pending agent work.
+- Preserved the supported Matrix/pivotTable naming distinction and legacy field syntax in example manifests.
+
 ## [0.1.0] — 2026-09-24
 
 ### Added

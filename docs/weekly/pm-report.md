@@ -27,7 +27,7 @@
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Zero-dependency CLI health, CI workflows, toolchain |
 | **Bolt** | ⚡ | Fri 10:00 GMT+7 | Today | ✅ Complete | Build speed: ~1.8s. Max size: ~2.8MB (down from ~4.7MB). Replaced deep schema clone with `Object.hasOwn` merging. Removed heavy catalog duplication. Offline UI scales well under load. |
 | **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Test suite run, rebuild-check drift, detect tests |
-| **Scribe** | 📜 | Sun 10:00 GMT+7 | Pending | ⏳ Scheduled | Documentation sync, visual references, changelog update |
+| **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-12 | Documentation updated | README example list and changelog synchronized; pending visual/UI verification remains open. |
 
 ---
 
@@ -50,6 +50,15 @@
 ---
 
 ## 5. Archive & Sprint History Log
+
+<details>
+<summary>Verified Maintenance Results — 2026-10-12</summary>
+
+- The combined changes from PRs #1, #3, and #5 passed all 12 local tests, manifest validation, publication auditing, model-contract extraction, and rebuild comparisons for all five guides.
+- GitHub CI passed on Node.js 20 and 22 on Ubuntu and Windows for the merged main commit `d7d336e6c508c8f6904a32a503686fd855445bb4`.
+- README now lists all five example manifests. Matrix remains the supported user-facing alias for `pivotTable`; legacy string fields and structured field objects are both supported.
+- These automated results do not establish completion of live Desktop UI inspection, browser interaction, accessibility, or theme-fidelity checks.
+</details>
 
 <details>
 <summary>Initial Setup (Pre-Sprint Baseline)</summary>
