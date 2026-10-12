@@ -21,7 +21,7 @@
 | Agent | Icon | Schedule | Last Run | Status | Key Deliverables / Findings |
 |---|:---:|---|---|:---:|---|
 | **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | Pending | ⏳ Scheduled | Weekly sprint kickoff, backlog audit, triage |
-| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | Pending | ⏳ Scheduled | Publication audit, leak check, schema hash integrity |
+| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | 2026-10-12 | ✅ **PASS** | Publication audit passed, no leaks detected, schema checksum valid, 0 remote dependencies found |
 | **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Manifest schema validation, field-roles, model-contract |
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Shell fidelity, SVG visual mocks, theme & a11y audit |
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Zero-dependency CLI health, CI workflows, toolchain |
@@ -33,7 +33,7 @@
 
 ## 3. Active Blockers & Critical Findings
 
-- *None currently blocking. Ready for initial Jules scheduled agent run.*
+- ✅ **Sentinel run complete (2026-10-12)**: Public audit passed. No private leaks detected. Gitignore boundaries intact. Schema checksums valid against release profile. Zero remote dependencies found in HTML examples.
 
 ---
 
