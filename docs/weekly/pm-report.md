@@ -9,8 +9,8 @@
 ## 1. Executive Summary & Sprint Goals
 
 ### Current Sprint Focus
-- [ ] **Visual Catalog Expansion**: Verify field-roles and formatting options for core visuals. We need manifest examples or live-UI verification evidence for Decomposition Tree, Gauge, Waterfall, KPI, and Scatter visuals.
-- [ ] **Legacy Syntax Update**: Update legacy string syntax for fields (e.g. `"Measures[Open incidents]"`) to structured objects (`{ role, field, kind }`) across all example manifests (`examples/*.json`). Update legacy unversioned visual syntax (`"type": "Matrix"`) to `"type": "pivotTable"` in `sample-dashboard.json` and `executive-sales-dashboard.json`.
+- [ ] **Example Coverage Expansion**: Add manifest examples for Decomposition Tree, Gauge, Waterfall, KPI, and Scatter using their existing exact-build field-role evidence. Inspect the target Desktop UI before making additional format-pane claims.
+- [ ] **Optional Structured-Field Examples**: Demonstrate `{ role, field, kind, aggregation }` assignments where useful. Legacy string fields and the user-facing `Matrix` alias for `pivotTable` remain supported; no migration is required.
 - [ ] **Schema & Contract Verification**: Ensure all manifests validate against `schemas/manifest.schema.json` and `model-contract` extracts clean TMDL/DAX contracts.
 - [ ] **Canvas Preview & Theme Fidelity**: Validate SVG visual mockups in Blueprint and Mockup modes against deuteranopia and custom theme palettes.
 - [ ] **Zero-Drift & Offline Hygiene**: Enforce 100% offline standalone HTML constraint (no external CDNs) and pass `audit:public` with zero rebuild drift.
@@ -21,21 +21,22 @@
 
 | Agent | Icon | Schedule | Last Run | Status | Key Deliverables / Findings |
 |---|:---:|---|---|:---:|---|
-| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | 2026-10-12 | ✅ Completed | Weekly sprint kickoff, backlog audit, triage |
-| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | Pending | ⏳ Scheduled | Audit public release blocklists, schema hashes, and offline script isolation. |
-| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Validate manifest schemas and check model-contract exports. |
-| **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Check SVG visual mockup fidelity and theme contrast. |
-| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI execution and CI matrix. |
-| **Bolt** | ⚡ | Fri 10:00 GMT+7 | Pending | ⏳ Scheduled | Benchmark HTML guide file sizes and generator build speed. |
-| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Run full test suite and rebuild-check verification. |
-| **Scribe** | 📜 | Sun 10:00 GMT+7 | Pending | ⏳ Scheduled | Synchronize documentation and update CHANGELOG. |
+| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | 2026-10-12 | Backlog reviewed | Separated missing examples from verified field-role evidence and optional structured-field adoption. |
+| **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | 2026-10-12 | ✅ **PASS** | Publication audit passed, no leaks detected, schema checksum valid, 0 remote dependencies found |
+| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Validate new example manifests and model-contract exports against the existing field-role reference. |
+| **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Check SVG visual mocks, browser interaction, theme contrast, and accessibility; inspect live UI for new format guidance. |
+| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI health and the supported CI toolchain. |
+| **Bolt** | ⚡ | Fri 10:00 GMT+7 | 2026-10-12 | Payload reduction verified | PR #1 reduced the largest guide from 4,907,784 to 2,879,258 bytes by removing duplicate per-placement catalog formatting; controlled timing and browser load checks remain pending. |
+| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Run tests and rebuild comparisons after new examples; preserve transparent Desktop detection results. |
+| **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-12 | Documentation updated | README example list and changelog synchronized; pending visual/UI verification remains open. |
 
 ---
 
 ## 3. Active Blockers & Critical Findings
 
-- **Missing Visual Catalog Coverage**: Manifest examples or live-UI verification evidence are missing for Decomposition Tree, Gauge, Waterfall, KPI, and Scatter visuals based on `references/build/2.150.5353.0.json`.
-- **Legacy Syntax in Manifests**: All example manifests use legacy string syntax for fields instead of the structured `{ role, field, kind }` objects. Also, `sample-dashboard.json` and `executive-sales-dashboard.json` use the legacy `"type": "Matrix"` instead of `"type": "pivotTable"`. These need to be updated.
+- ✅ **Sentinel run complete (2026-10-12)**: Public audit passed. No private leaks detected. Gitignore boundaries intact. Schema checksums valid against release profile. Zero remote dependencies found in HTML examples.
+- **Example backlog**: The five visuals listed below lack example placements. This is coverage work, not a blocker to the current generator workflow.
+- **Pending manual checks**: Browser interaction, accessibility, theme fidelity, and any new live Desktop format-pane evidence remain unverified by the automated maintenance checks.
 
 ---
 
@@ -43,24 +44,35 @@
 
 - **Pinned Build**: `2.150.5353.0` (January 2026 Report Server)
 - **Manifests Tracked**:
-  - `examples/sample-dashboard.json` (Core visuals: card, bar, slicer) - *Flags: Legacy string fields, legacy `Matrix` syntax.*
-  - `examples/executive-sales-dashboard.json` (Multi-visual executive overview) - *Flags: Legacy string fields, legacy `Matrix` syntax.*
-  - `examples/sales-scorecard.json` (9 visuals, conditional formatting, matrix) - *Flags: Legacy string fields.*
-  - `examples/university-of-melbourne.json` (Treemap, table, line, custom theme) - *Flags: Legacy string fields.*
-  - `examples/opportunity-analysis.json` (26 visuals, 4-quadrant layout, deuteranopia-accessible palette) - *Flags: Legacy string fields.*
-- **Missing Visual Coverage**: Decomposition Tree, Gauge, Waterfall, KPI, Scatter.
+  - `examples/sample-dashboard.json` (3 visuals: current Card, clustered bar, Matrix)
+  - `examples/executive-sales-dashboard.json` (Multi-visual executive overview)
+  - `examples/sales-scorecard.json` (9 visuals, conditional formatting, matrix)
+  - `examples/university-of-melbourne.json` (Treemap, table, line, custom theme)
+  - `examples/opportunity-analysis.json` (26 visuals, 4-quadrant layout, deuteranopia-accessible palette)
+
+The pinned `references/build/2.150.5353.0.json` marks the field roles for each visual below as verified. None is placed in the five current example manifests. Field-role verification does not establish additional format-pane settings, role capacity, requiredness, accepted kinds, or aggregation defaults.
+
+| Visual | Catalog ID | Exact-build field-role evidence | Example placement |
+|---|---|---|---|
+| Decomposition Tree | `decompositionTreeVisual` | Verified | Pending |
+| Gauge | `gauge` | Verified | Pending |
+| Waterfall | `waterfallChart` | Verified | Pending |
+| KPI | `kpi` | Verified | Pending |
+| Scatter | `scatterChart` | Verified | Pending |
+
+Legacy string fields and structured objects can coexist within a manifest. `Matrix` resolves to `pivotTable`; neither spelling indicates an unversioned or unsupported visual.
 
 ---
 
 ## 5. Archive & Sprint History Log
 
 <details>
-<summary>Previous Sprint</summary>
+<summary>Verified Maintenance Results — 2026-10-12</summary>
 
-- [x] **Visual Catalog Expansion**: Verify field-roles and formatting options for core visuals (Matrix, Decomposition Tree, Gauge, KPI).
-- [x] **Schema & Contract Verification**: Ensure all manifests validate against `schemas/manifest.schema.json` and `model-contract` extracts clean TMDL/DAX contracts.
-- [x] **Canvas Preview & Theme Fidelity**: Validate SVG visual mockups in Blueprint and Mockup modes against deuteranopia and custom theme palettes.
-- [x] **Zero-Drift & Offline Hygiene**: Enforce 100% offline standalone HTML constraint (no external CDNs) and pass `audit:public` with zero rebuild drift.
+- The combined changes from PRs #1, #3, and #5 passed all 12 local tests, manifest validation, publication auditing, model-contract extraction, and rebuild comparisons for all five guides.
+- GitHub CI passed on Node.js 20 and 22 on Ubuntu and Windows for the merged main commit `d7d336e6c508c8f6904a32a503686fd855445bb4`.
+- README now lists all five example manifests. Matrix remains the supported user-facing alias for `pivotTable`; legacy string fields and structured field objects are both supported.
+- These automated results do not establish completion of live Desktop UI inspection, browser interaction, accessibility, or theme-fidelity checks.
 </details>
 
 <details>

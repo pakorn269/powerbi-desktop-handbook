@@ -73,7 +73,7 @@ Commands accept `--json`. Release-aware commands accept `--release VERSION`; the
 
 ## Building a handbook
 
-Start with `examples/sample-dashboard.json`, `examples/executive-sales-dashboard.json`, `examples/sales-scorecard.json`, or `examples/university-of-melbourne.json`. A manifest defines:
+Start with `examples/sample-dashboard.json`, `examples/executive-sales-dashboard.json`, `examples/sales-scorecard.json`, `examples/university-of-melbourne.json`, or `examples/opportunity-analysis.json`. A manifest defines:
 
 - Handbook identity, title, organization, subtitle, and target release.
 - Report page dimensions, brand colors, and optional custom theme definitions (`dataColors`, `background`, `foreground`, `tableAccent`).
