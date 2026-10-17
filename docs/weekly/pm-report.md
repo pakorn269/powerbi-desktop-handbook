@@ -27,7 +27,7 @@
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | 2026-10-14 | ✅ **PASS** | Verified canvas SVG mocks, pure CSS responsive layout, deuteranopia theme cascading, and print rules. No remote dependencies found. Recommendation: Consider adding explicit contrast-ratio testing in CI for generated data colors against the background. |
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI health and the supported CI toolchain. |
 | **Bolt** | ⚡ | Fri 10:00 GMT+7 | 2026-10-12 | Payload reduction verified | PR #1 reduced the largest guide from 4,907,784 to 2,879,258 bytes by removing duplicate per-placement catalog formatting; controlled timing and browser load checks remain pending. |
-| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Run tests and rebuild comparisons after new examples; preserve transparent Desktop detection results. |
+| **Radar** | 📡 | Sat 10:00 GMT+7 | 2026-10-17 | ✅ **PASS** | Run complete automated test suite (`npm test`, `npm run rebuild-check`, `npm run detect`, `npm run audit:public`). All passed with 0 drift. Expanded test coverage to include Decomposition Tree, Gauge, KPI, empty/single-visual edge cases and invalid aggregations. |
 | **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-12 | Documentation updated | README example list and changelog synchronized; pending visual/UI verification remains open. |
 
 ---

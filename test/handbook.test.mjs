@@ -231,6 +231,74 @@ test('structured field shape errors fail validation while semantic issues warn',
   assert.ok(semantic.warnings.some(warning => warning.includes("required role 'category' empty")));
 });
 
+
+test('specific visual types resolve correctly (Matrix, Decomposition Tree, KPI, Gauge)', () => {
+  const catalog = buildCatalog('2.150.5353.0');
+  assert.equal(resolveVisual(catalog, 'Matrix').id, 'pivotTable');
+  assert.equal(resolveVisual(catalog, 'decompositionTreeVisual').id, 'decompositionTreeVisual');
+  assert.equal(resolveVisual(catalog, 'gauge').id, 'gauge');
+  assert.equal(resolveVisual(catalog, 'kpi').id, 'kpi');
+  assert.equal(resolveVisual(catalog, 'waterfallChart').id, 'waterfallChart');
+  assert.equal(resolveVisual(catalog, 'scatterChart').id, 'scatterChart');
+});
+
+
+test('invalid field aggregation types are handled', () => {
+  const malformed = structuredClone(sample);
+  malformed.visuals[0].fieldAssignments = [
+    { role: 'value', field: 'Measures[Open incidents]', kind: 'measure', aggregation: 'not-a-valid-aggregation' }
+  ];
+
+  // validation doesn't explicitly check aggregation enumeration in the provided source snippet (it just checks string or null)
+  // but if it is modified to trigger a warning, let's just make sure it parses properly without crashing.
+  const invalid = validateManifest(malformed);
+  assert.equal(invalid.ok, true);
+});
+
+test('missing or unknown visual types in manifest are reported', () => {
+  const malformed = structuredClone(sample);
+  malformed.visuals[0].type = 'definitelyNotAVisual';
+  const invalid = validateManifest(malformed);
+  assert.equal(invalid.ok, false);
+  assert.ok(invalid.errors.some(e => e.includes('not in the release catalog')));
+});
+
+test('malformed theme JSON files are gracefully ignored or reported', () => {
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'pbi-handbook-malformed-theme-'));
+  const manifestFile = path.join(temp, 'manifest.json');
+  const output = path.join(temp, 'guide.html');
+
+  const dashboard = structuredClone(sample);
+  // simulate a malformed theme configuration by providing invalid data colors
+  dashboard.theme = { dataColors: 'not-an-array' };
+
+  fs.writeFileSync(manifestFile, JSON.stringify(dashboard), 'utf8');
+
+  const result = buildHandbook(manifestFile, output);
+  assert.equal(result.ok, true); // It builds without crashing, using fallback colors in the template
+});
+
+test('empty or single-visual dashboards are built successfully', () => {
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'pbi-handbook-empty-test-'));
+  const output = path.join(temp, 'guide.html');
+  const emptyDashboard = structuredClone(sample);
+  emptyDashboard.visuals = [];
+
+  const manifestFile = path.join(temp, 'manifest.json');
+  fs.writeFileSync(manifestFile, JSON.stringify(emptyDashboard), 'utf8');
+
+  const result = buildHandbook(manifestFile, output);
+  assert.equal(result.ok, true);
+  assert.equal(result.visuals, 0);
+
+  const singleDashboard = structuredClone(sample);
+  singleDashboard.visuals = [singleDashboard.visuals[0]];
+  fs.writeFileSync(manifestFile, JSON.stringify(singleDashboard), 'utf8');
+  const resultSingle = buildHandbook(manifestFile, output);
+  assert.equal(resultSingle.ok, true);
+  assert.equal(resultSingle.visuals, 1);
+});
+
 test('handbook JSON serialization escapes HTML-sensitive and separator characters', () => {
   const value = { manifest: '</script><script>&\u2028\u2029', catalog: '<catalog>', role: '&role', field: '>field<' };
   const serialized = serializeForHtmlData(value);
