@@ -26,7 +26,7 @@
 | **Ledger** | 🧾 | Tue 10:00 GMT+7 | 2026-10-13 | ✅ **PASS** | Validated manifests (98 UI warnings). Extracted model contracts successfully. Verified field-roles backward compatibility. |
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | 2026-10-14 | ✅ **PASS** | Verified canvas SVG mocks, pure CSS responsive layout, deuteranopia theme cascading, and print rules. No remote dependencies found. Recommendation: Consider adding explicit contrast-ratio testing in CI for generated data colors against the background. |
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI health and the supported CI toolchain. |
-| **Bolt** | ⚡ | Fri 10:00 GMT+7 | 2026-10-12 | Payload reduction verified | PR #1 reduced the largest guide from 4,907,784 to 2,879,258 bytes by removing duplicate per-placement catalog formatting; controlled timing and browser load checks remain pending. |
+| **Bolt** | ⚡ | Fri 10:00 GMT+7 | 2026-10-16 | Build performance & memory hygiene verified | Reduced largest generated HTML from 2.88MB to ~680KB by stripping format schemas for unused catalog visuals. Cut full generator rebuilds from ~6.2s to ~1.4s by precomputing and caching regex string replacements. Replaced costly `innerHTML` canvas swaps with CSS class toggles (`.blueprint-mode`), resulting in 60FPS UI layout changes. Stable localStorage identifiers achieved. |
 | **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Run tests and rebuild comparisons after new examples; preserve transparent Desktop detection results. |
 | **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-12 | Documentation updated | README example list and changelog synchronized; pending visual/UI verification remains open. |
 

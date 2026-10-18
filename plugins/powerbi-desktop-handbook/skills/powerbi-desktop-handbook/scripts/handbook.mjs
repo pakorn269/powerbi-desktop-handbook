@@ -130,10 +130,15 @@ export function buildCatalog(version = '2.150.5353.0') {
   const visuals = visualNames.map(name => {
     const id = name.slice(7);
     const override = overrides.get(id) ?? {};
+    const label = override.label ?? id.replace(/([a-z])([A-Z])/g, '$1 $2');
+    const aliases = override.aliases ?? [];
     return {
       id,
-      label: override.label ?? id.replace(/([a-z])([A-Z])/g, '$1 $2'),
-      aliases: override.aliases ?? [],
+      cleanId: clean(id),
+      label,
+      cleanLabel: clean(label),
+      aliases,
+      cleanAliases: aliases.map(clean),
       status: override.status ?? 'schema-present',
       replacement: override.replacement ?? null,
       replacementFor: override.replacementFor ?? [],
@@ -143,7 +148,15 @@ export function buildCatalog(version = '2.150.5353.0') {
     };
   });
   for (const item of curated.visuals) {
-    if (!visuals.some(v => v.id === item.id)) visuals.push({ ...item, formatting: [] });
+    if (!visuals.some(v => v.id === item.id)) {
+      visuals.push({
+        ...item,
+        cleanId: clean(item.id),
+        cleanLabel: clean(item.label),
+        cleanAliases: (item.aliases ?? []).map(clean),
+        formatting: []
+      });
+    }
   }
   visuals.sort((a, b) => a.label.localeCompare(b.label));
   const gallery = (curated.gallery ?? []).map(item => {
@@ -164,8 +177,8 @@ export function buildCatalog(version = '2.150.5353.0') {
  */
 export function resolveVisual(catalog, query) {
   const q = clean(query);
-  return catalog.visuals.find(v => clean(v.id) === q)
-    ?? catalog.visuals.find(v => [v.label, ...(v.aliases ?? [])].some(name => clean(name) === q))
+  return catalog.visuals.find(v => v.cleanId === q)
+    ?? catalog.visuals.find(v => v.cleanLabel === q || v.cleanAliases.includes(q))
     ?? null;
 }
 
@@ -336,13 +349,22 @@ function enrichedData(manifest) {
   const guidePath = pathsForRelease(manifest.release).guideFile;
   const guide = fs.existsSync(guidePath) ? readJson(guidePath) : { entries: {} };
   const { file: _localSchemaPath, ...publicSchemaCheck } = catalog.schemaCheck;
+
+  const usedVisuals = new Set((manifest.visuals ?? []).map(v => resolveVisual(catalog, v.type)?.id));
+  const usedGallery = new Set((catalog.gallery ?? []).map(g => g.id));
+  const optimizedCatalogVisuals = catalog.visuals.map(v => {
+    if (usedVisuals.has(v.id) || usedGallery.has(v.id)) return v;
+    const { formatting, ...rest } = v;
+    return { ...rest, formatting: [] };
+  });
+
   return {
     generatedAt: new Date().toISOString(),
     manifest,
     release: catalog.release,
     schemaCheck: publicSchemaCheck,
     statuses: catalog.statuses,
-    catalog: catalog.visuals,
+    catalog: optimizedCatalogVisuals,
     gallery: catalog.gallery,
     buildRoles,
     pageGuide: guide.entries.page ?? { formatRoot: 'Format page', sections: [] },
