@@ -28,7 +28,7 @@
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI health and the supported CI toolchain. |
 | **Bolt** | ⚡ | Fri 10:00 GMT+7 | 2026-10-12 | Payload reduction verified | PR #1 reduced the largest guide from 4,907,784 to 2,879,258 bytes by removing duplicate per-placement catalog formatting; controlled timing and browser load checks remain pending. |
 | **Radar** | 📡 | Sat 10:00 GMT+7 | 2026-10-17 | ✅ **PASS** | Run complete automated test suite (`npm test`, `npm run rebuild-check`, `npm run detect`, `npm run audit:public`). All passed with 0 drift. Expanded test coverage to include Decomposition Tree, Gauge, KPI, empty/single-visual edge cases and invalid aggregations. |
-| **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-12 | Documentation updated | README example list and changelog synchronized; pending visual/UI verification remains open. |
+| **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-18 | ✅ **PASS** | Documentation updated. README example list and changelog synchronized; test additions logged. |
 
 ---
 
@@ -66,6 +66,14 @@ Legacy string fields and structured objects can coexist within a manifest. `Matr
 ---
 
 ## 5. Archive & Sprint History Log
+
+<details>
+<summary>Verified Maintenance Results — 2026-10-18</summary>
+
+- Radar expanded handbook test coverage to include Decomposition Tree, Gauge, KPI, single-visual edge cases, malformed themes, and invalid aggregations. All automated CI checks passed.
+- Scribe finalized the weekly changelog and PM report documentation closeout.
+- Automated validation workflows continue to block schema inference when a specific `buildRoles` observation dictates otherwise.
+</details>
 
 <details>
 <summary>Verified Maintenance Results — 2026-10-12</summary>
