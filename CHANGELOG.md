@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Added `docs/weekly/pm-report.md` for sprint tracking.
 - Added `examples/opportunity-analysis.json` to example manifest list in README.
+- Added tests for specific visual types, invalid aggregations, missing visuals, empty arrays, malformed themes, and single visuals. Updated pm-report with Radar agent run results.
 
 ### Changed
 
