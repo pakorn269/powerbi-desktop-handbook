@@ -23,7 +23,7 @@
 |---|:---:|---|---|:---:|---|
 | **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | 2026-10-12 | Backlog reviewed | Separated missing examples from verified field-role evidence and optional structured-field adoption. |
 | **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | 2026-10-12 | ✅ **PASS** | Publication audit passed, no leaks detected, schema checksum valid, 0 remote dependencies found |
-| **Ledger** | 🧾 | Tue 10:00 GMT+7 | 2026-10-13 | ✅ **PASS** | Validated manifests (98 UI warnings). Extracted model contracts successfully. Verified field-roles backward compatibility. |
+| **Ledger** | 🧾 | Tue 10:00 GMT+7 | 2026-10-20 | ✅ **PASS** | Validated manifests (102 UI warnings). Extracted model contracts successfully. Verified field-roles backward compatibility. |
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | 2026-10-14 | ✅ **PASS** | Verified canvas SVG mocks, pure CSS responsive layout, deuteranopia theme cascading, and print rules. No remote dependencies found. Recommendation: Consider adding explicit contrast-ratio testing in CI for generated data colors against the background. |
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI health and the supported CI toolchain. |
 | **Bolt** | ⚡ | Fri 10:00 GMT+7 | 2026-10-12 | Payload reduction verified | PR #1 reduced the largest guide from 4,907,784 to 2,879,258 bytes by removing duplicate per-placement catalog formatting; controlled timing and browser load checks remain pending. |
@@ -35,7 +35,7 @@
 ## 3. Active Blockers & Critical Findings
 
 - ✅ **Sentinel run complete (2026-10-12)**: Public audit passed. No private leaks detected. Gitignore boundaries intact. Schema checksums valid against release profile. Zero remote dependencies found in HTML examples.
-- ✅ **Ledger run complete (2026-10-13)**: Validated all example manifests against schemas (no errors, 98 warnings for UI instructions lacking schema assertions). Extracted semantic model contracts successfully. Confirmed structured-field assignments and legacy string syntax both work. Visual types mapped correctly (Matrix -> pivotTable, distinct cards).
+- ✅ **Ledger run complete (2026-10-20)**: Validated all example manifests against schemas (no errors, 102 warnings for UI instructions lacking schema assertions). Extracted semantic model contracts successfully. Confirmed structured-field assignments and legacy string syntax both work. Visual types mapped correctly (Matrix -> pivotTable, distinct cards).
 - **Example backlog**: The five visuals listed below lack example placements. This is coverage work, not a blocker to the current generator workflow.
 - **Pending manual checks**: Any new live Desktop format-pane evidence remains unverified by the automated maintenance checks.
 
