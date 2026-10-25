@@ -113,6 +113,46 @@
       "status": "surface",
       "evidence": ["2.150 theme schema"],
       "liveUi": "pending"
+    },
+    {
+      "id": "decompositionTreeVisual",
+      "label": "Decomposition tree",
+      "aliases": ["decomposition tree"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "gauge",
+      "label": "Gauge",
+      "aliases": ["gauge chart"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "waterfallChart",
+      "label": "Waterfall chart",
+      "aliases": ["waterfall"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "kpi",
+      "label": "KPI",
+      "aliases": ["kpi indicator"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
+    },
+    {
+      "id": "scatterChart",
+      "label": "Scatter chart",
+      "aliases": ["scatter", "scatter plot"],
+      "status": "available",
+      "evidence": ["2.150 theme schema", "project observation"],
+      "liveUi": "pending"
     }
   ]
 }

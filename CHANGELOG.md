@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- Audit CLI and CI pipeline, fix CI build step (#15).
 - Updated the weekly PM report with verified maintenance results while preserving pending agent work.
 - Preserved the supported Matrix/pivotTable naming distinction and legacy field syntax in example manifests.
 
