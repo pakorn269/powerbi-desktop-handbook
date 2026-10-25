@@ -28,8 +28,8 @@
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Check SVG visual mockup fidelity and theme contrast. |
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | 2026-10-22 | ✅ **PASS** | Verified zero runtime dependencies. CLI pipeline executes successfully with correct error handling. Audited CI workflow and updated build step to use `npm run build`. Verified agent skill installation script. |
 | **Bolt** | ⚡ | Fri 10:00 GMT+7 | Pending | ⏳ Scheduled | Benchmark HTML guide file sizes and generator build speed. |
-| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Run full test suite and rebuild-check verification. |
-| **Scribe** | 📜 | Sun 10:00 GMT+7 | 2026-10-25 | ✅ **PASS** | Synchronize documentation, updated visual catalog to include missing visual IDs, and update CHANGELOG. |
+| **Radar** | 📡 | Sat 10:00 GMT+7 | 2026-10-24 | ✅ **PASS** | Passed all 17/17 tests. Rebuild-check passed zero drift. Coverage already includes requested visual types and edge cases. |
+| **Scribe** | 📜 | Sun 10:00 GMT+7 | Pending | ⏳ Scheduled | Synchronize documentation and update CHANGELOG. |
 
 ---
 
