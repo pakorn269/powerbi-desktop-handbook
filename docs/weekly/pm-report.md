@@ -36,6 +36,7 @@
 ## 3. Active Blockers & Critical Findings
 
 - **No critical blockers**.
+- **Sentinel findings**: Passed all audits (public leaks, gitignore boundaries, schema integrity, and offline requirements).
 - **Example backlog**: The five visuals listed below lack example placements. This is coverage work, not a blocker to the current generator workflow.
 - **Pending manual checks**: Any new live Desktop format-pane evidence remains unverified by the automated maintenance checks.
 
