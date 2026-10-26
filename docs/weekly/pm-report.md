@@ -9,12 +9,11 @@
 ## 1. Executive Summary & Sprint Goals
 
 ### Current Sprint Focus
-- [ ] **Example Coverage Expansion**: Add manifest examples for Decomposition Tree, Gauge, Waterfall, KPI, and Scatter using their existing exact-build field-role evidence. Inspect the target Desktop UI before making additional format-pane claims.
-- [ ] **Optional Structured-Field Examples**: Demonstrate `{ role, field, kind, aggregation }` assignments where useful. Legacy string fields and the user-facing `Matrix` alias for `pivotTable` remain supported; no migration is required.
-- [ ] **Roadmap Alignment & Division of Concerns**: Ensure the clear separation of responsibilities holds—this repository focuses solely on visual catalog, layout, and handbook generation, while `powerbi-modeling-mcp` handles semantic modeling, DAX, and TMDL.
-- [ ] **Schema & Contract Verification**: Ensure all manifests validate against `schemas/manifest.schema.json` and `model-contract` extracts clean TMDL/DAX contracts.
-- [ ] **Canvas Preview & Theme Fidelity**: Validate SVG visual mockups in Blueprint and Mockup modes against deuteranopia and custom theme palettes.
-- [ ] **Zero-Drift & Offline Hygiene**: Enforce 100% offline standalone HTML constraint (no external CDNs) and pass `audit:public` with zero rebuild drift.
+- [ ] **Visual Catalog Coverage Audit**: Generate manifest examples for Decomposition Tree, Gauge, Waterfall, KPI, and Scatter visuals using exact-build field-role evidence. Ensure evidence is live-UI verified before declaring full support.
+- [ ] **Manifest Best Practices**: Ensure field role documentation is exhaustive for all visuals and eliminate legacy, unversioned syntax in generated output.
+- [ ] **Roadmap Drift Prevention**: Synchronize newly added features, CLI flags, and visual guides with `README.md` and `plan.md`.
+- [ ] **Division of Concerns**: Strictly maintain boundary with `powerbi-modeling-mcp` (which handles semantic modeling, DAX, TMDL); this repo focuses on visual catalogs, layout, and handbook generation.
+- [ ] **Cross-Agent Coordination**: Direct and manage the workload for Sentinel, Ledger, Palette, Plumber, Bolt, Radar, and Scribe to ensure continuous testing, security auditing, schema enforcement, UI mockup checks, build speed, and repo hygiene.
 
 ---
 
@@ -22,22 +21,22 @@
 
 | Agent | Icon | Schedule | Last Run | Status | Key Deliverables / Findings |
 |---|:---:|---|---|:---:|---|
-| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | 2026-10-19 | ✅ **PASS** | Audited visual catalog roadmap, updated PM report, separated missing examples, and outlined cross-agent triage plan. |
+| **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | 2026-10-26 | ✅ **PASS** | Audited alignment between visual catalog, manifest spec, and examples. Triage and sprint focus setup for the week. |
 | **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | Pending | ⏳ Scheduled | Audit public release blocklists, schema hashes, and offline script isolation. |
 | **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Validate manifest schemas and check model-contract exports. |
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Check SVG visual mockup fidelity and theme contrast. |
-| **Plumber** | 🔧 | Thu 10:00 GMT+7 | 2026-10-22 | ✅ **PASS** | Verified zero runtime dependencies. CLI pipeline executes successfully with correct error handling. Audited CI workflow and updated build step to use `npm run build`. Verified agent skill installation script. |
+| **Plumber** | 🔧 | Thu 10:00 GMT+7 | Pending | ⏳ Scheduled | Verify zero-dependency CLI execution and CI matrix. |
 | **Bolt** | ⚡ | Fri 10:00 GMT+7 | Pending | ⏳ Scheduled | Benchmark HTML guide file sizes and generator build speed. |
-| **Radar** | 📡 | Sat 10:00 GMT+7 | 2026-10-24 | ✅ **PASS** | Passed all 17/17 tests. Rebuild-check passed zero drift. Coverage already includes requested visual types and edge cases. |
+| **Radar** | 📡 | Sat 10:00 GMT+7 | Pending | ⏳ Scheduled | Run full test suite and rebuild-check verification. |
 | **Scribe** | 📜 | Sun 10:00 GMT+7 | Pending | ⏳ Scheduled | Synchronize documentation and update CHANGELOG. |
 
 ---
 
 ## 3. Active Blockers & Critical Findings
 
-- **No critical blockers**.
-- **Example backlog**: The five visuals listed below lack example placements. This is coverage work, not a blocker to the current generator workflow.
-- **Pending manual checks**: Any new live Desktop format-pane evidence remains unverified by the automated maintenance checks.
+- **No critical blockers** currently preventing CI or handbook generation.
+- **Coverage Gap Finding**: Examples for Decomposition Tree, Gauge, Waterfall, KPI, and Scatter are still missing. Manifest specification for these visuals has been outlined to unblock implementation.
+- **UI Verification Pending**: New format-pane evidence remains unverified until live Desktop UI inspections are formally tracked against target build 2.150.5353.0.
 
 ---
 
@@ -50,8 +49,6 @@
   - `examples/sales-scorecard.json` (9 visuals, conditional formatting, matrix)
   - `examples/university-of-melbourne.json` (Treemap, table, line, custom theme)
   - `examples/opportunity-analysis.json` (26 visuals, 4-quadrant layout, deuteranopia-accessible palette)
-
-The pinned `references/build/2.150.5353.0.json` marks the field roles for each visual below as verified. None is placed in the five current example manifests. Field-role verification does not establish additional format-pane settings, role capacity, requiredness, accepted kinds, or aggregation defaults.
 
 ### Manifest Specification for Missing Visuals
 
@@ -82,6 +79,18 @@ Legacy string fields and structured objects can coexist within a manifest. `Matr
 ## 5. Archive & Sprint History Log
 
 <details>
+<summary>Sprint Closeout Summary (Folded by AI PM Manager) — 2026-10-19 to 2026-10-25</summary>
+
+- Scribe agent run completed successfully.
+- Added visual catalog mappings in `references/visuals/2.150.json` for Decomposition Tree (`decompositionTreeVisual`), Gauge (`gauge`), Waterfall (`waterfallChart`), KPI (`kpi`), and Scatter (`scatterChart`) to formally track them in the catalog.
+- Verified README, AGENTS, and CONTRIBUTING documentation were up-to-date and completely accurate.
+- `CHANGELOG.md` updated to reflect this week's commits, specifically auditing the CLI/CI pipeline (PR #15).
+- Re-ran test, validate, audit, build, and rebuild-check steps successfully, resulting in a zero-drift clean sprint state.
+- Plumber verified zero runtime dependencies. CLI pipeline executes successfully with correct error handling. Audited CI workflow and updated build step to use `npm run build`. Verified agent skill installation script. (2026-10-22)
+- Radar passed all 17/17 tests. Rebuild-check passed zero drift. (2026-10-24)
+</details>
+
+<details>
 <summary>Verified Maintenance Results — 2026-10-12 to 2026-10-18</summary>
 
 - Radar expanded handbook test coverage to include Decomposition Tree, Gauge, KPI, single-visual edge cases, malformed themes, and invalid aggregations. All automated CI checks passed.
@@ -104,14 +113,4 @@ Legacy string fields and structured objects can coexist within a manifest. `Matr
 - Configured single living report workflow in `docs/weekly/pm-report.md`.
 - Target release profile pinned to build `2.150.5353.0`.
 - All 5 example guides rebuilt and verified offline.
-</details>
-
-<details>
-<summary>Draft Summary: Sprint Closeout (To be folded by AI PM Manager)</summary>
-
-- Scribe agent run completed successfully.
-- Added visual catalog mappings in `references/visuals/2.150.json` for Decomposition Tree (`decompositionTreeVisual`), Gauge (`gauge`), Waterfall (`waterfallChart`), KPI (`kpi`), and Scatter (`scatterChart`) to formally track them in the catalog.
-- Verified README, AGENTS, and CONTRIBUTING documentation were up-to-date and completely accurate.
-- `CHANGELOG.md` updated to reflect this week's commits, specifically auditing the CLI/CI pipeline (PR #15).
-- Re-ran test, validate, audit, build, and rebuild-check steps successfully, resulting in a zero-drift clean sprint state.
 </details>
