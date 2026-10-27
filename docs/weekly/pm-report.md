@@ -24,7 +24,7 @@
 |---|:---:|---|---|:---:|---|
 | **AI PM Manager** | 🧭 | Mon 00:00 GMT+7 | 2026-10-19 | ✅ **PASS** | Audited visual catalog roadmap, updated PM report, separated missing examples, and outlined cross-agent triage plan. |
 | **Sentinel** | 🛡️ | Mon 10:00 GMT+7 | Pending | ⏳ Scheduled | Audit public release blocklists, schema hashes, and offline script isolation. |
-| **Ledger** | 🧾 | Tue 10:00 GMT+7 | Pending | ⏳ Scheduled | Validate manifest schemas and check model-contract exports. |
+| **Ledger** | 🧾 | Tue 10:00 GMT+7 | 2026-10-27 | ✅ **PASS** | Validated manifests (0 errors, warnings remain for unasserted UI instructions). Verified model-contract exact extraction. Tested backwards compatibility of `visuals[].fields` schema with legacy syntax. Verified Matrix is resolved. |
 | **Palette** | 🎨 | Wed 10:00 GMT+7 | Pending | ⏳ Scheduled | Check SVG visual mockup fidelity and theme contrast. |
 | **Plumber** | 🔧 | Thu 10:00 GMT+7 | 2026-10-22 | ✅ **PASS** | Verified zero runtime dependencies. CLI pipeline executes successfully with correct error handling. Audited CI workflow and updated build step to use `npm run build`. Verified agent skill installation script. |
 | **Bolt** | ⚡ | Fri 10:00 GMT+7 | Pending | ⏳ Scheduled | Benchmark HTML guide file sizes and generator build speed. |
@@ -38,6 +38,7 @@
 - **No critical blockers**.
 - **Example backlog**: The five visuals listed below lack example placements. This is coverage work, not a blocker to the current generator workflow.
 - **Pending manual checks**: Any new live Desktop format-pane evidence remains unverified by the automated maintenance checks.
+- **Ledger validation warnings**: `npm run validate` reports 0 schema errors across all 5 example manifests, but multiple warnings remain (e.g., `visuals[0].settings[0] is a UI instruction without a schema-property assertion`).
 
 ---
 
